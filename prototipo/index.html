@@ -1,0 +1,673 @@
+<title>Novo site CROM Engenharia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: site institucional industrial. Cabeçalho branco fixo, seções alternando papel claro e grafite, faixa amarelo-aço como único destaque. Visual único (claro com blocos escuros), definido de propósito. */
+:root{
+  --ink:#16191d;        /* grafite: textos e blocos escuros */
+  --steel:#262b31;      /* grafite mais claro: cards escuros */
+  --paper:#ffffff;
+  --mist:#f1f2ef;       /* off-white levemente frio, fundo de seções */
+  --line:#d8dbd6;
+  --mute:#59616a;
+  --mute-dark:#a9b0b7;  /* texto secundário sobre grafite */
+  --yellow:#f3bf3a;     /* amarelo-aço */
+  --yellow-deep:#d9a21a;
+  --green:#1f9d55;      /* WhatsApp */
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --wrap:1180px;
+  --gut:clamp(16px,4vw,32px);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{background:var(--paper);color:var(--ink);font:400 16px/1.65 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.02;text-wrap:balance;margin:0;letter-spacing:.005em}
+h1{font-size:clamp(2.6rem,6vw,4.6rem);text-transform:uppercase}
+h2{font-size:clamp(2rem,4vw,3rem);text-transform:uppercase}
+h3{font-size:1.5rem;font-weight:600}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gut)}
+.eyebrow{font:500 .78rem/1.3 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.on-dark .eyebrow{color:var(--yellow)}
+.lead{font-size:1.15rem;color:var(--mute);max-width:62ch}
+.on-dark{background:var(--ink);color:var(--paper)}
+.on-dark .lead{color:var(--mute-dark)}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+
+/* Faixa de protótipo */
+.proto{background:var(--yellow);color:var(--ink);font:500 .8rem/1.4 var(--mono);text-align:center;padding:8px var(--gut)}
+
+/* Barra superior */
+.topbar{background:var(--ink);color:var(--mute-dark);font-size:.85rem}
+.topbar .wrap{display:flex;flex-wrap:wrap;gap:6px 24px;justify-content:space-between;padding-block:8px}
+.topbar span{min-width:0;overflow-wrap:anywhere}
+@media (max-width:640px){.topbar .mail{display:none}.topbar .wrap{justify-content:flex-start}}
+.topbar b{color:var(--paper);font-weight:500}
+
+/* Cabeçalho */
+header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--paper);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;gap:16px;min-height:76px;position:relative}
+.logo{flex:0 1 auto;min-width:0}
+.logo img{height:44px;width:auto}
+nav.main{margin-left:auto;display:flex;align-items:center;gap:4px}
+nav.main a,nav.main button.drop{font:600 .98rem/1 var(--body);text-decoration:none;padding:10px 12px;border-radius:4px;background:none;border:0;cursor:pointer;color:var(--ink)}
+nav.main a:hover,nav.main button.drop:hover{background:var(--mist)}
+nav.main a[aria-current="page"]{box-shadow:inset 0 -3px 0 var(--yellow)}
+.has-sub{position:relative}
+.sub{position:absolute;top:100%;left:0;min-width:270px;background:var(--paper);border:1px solid var(--line);box-shadow:0 12px 30px rgba(22,25,29,.12);padding:8px;display:none}
+.has-sub:hover .sub,.has-sub:focus-within .sub{display:grid}
+.sub a{padding:10px 12px;font-weight:500}
+.sub small{display:block;font:400 .78rem var(--mono);color:var(--mute);margin-top:3px}
+.btn{display:inline-flex;align-items:center;gap:10px;font:600 1rem/1 var(--body);text-decoration:none;padding:15px 22px;border-radius:4px;border:2px solid transparent;cursor:pointer;transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn-y{background:var(--yellow);color:var(--ink)}
+.btn-y:hover{background:var(--yellow-deep)}
+.btn-o{border-color:currentColor;color:inherit;background:transparent}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.menu-toggle{display:none;margin-left:auto;background:none;border:2px solid var(--ink);border-radius:4px;padding:8px 12px;font:600 .9rem var(--body);cursor:pointer}
+@media (max-width:980px){
+  .menu-toggle{display:block}
+  nav.main{display:none;position:absolute;left:0;right:0;top:100%;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;padding:8px var(--gut) 16px}
+  nav.main.open{display:flex}
+  .has-sub .sub{position:static;display:grid;box-shadow:none;border:0;padding:0 0 0 12px}
+  nav.main .btn{justify-content:center;margin-top:8px}
+}
+
+/* Páginas */
+section[data-page]{display:none}
+section[data-page].active{display:block}
+.band{padding-block:clamp(56px,8vw,96px)}
+.band-mist{background:var(--mist)}
+.head{display:grid;gap:14px;margin-bottom:40px;max-width:760px}
+
+/* Hero */
+.hero{position:relative;color:var(--paper);background:var(--ink)}
+.hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.42}
+.hero .wrap{position:relative;padding-block:clamp(72px,11vw,140px);display:grid;gap:22px}
+.hero h1 span{color:var(--yellow)}
+.hero .lead{color:#d6dadf;max-width:58ch}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.spec span{overflow-wrap:anywhere}
+.spec{display:flex;flex-wrap:wrap;gap:8px 22px;font:500 .82rem/1.4 var(--mono);color:#d6dadf;border-top:1px solid rgba(255,255,255,.18);padding-top:18px;margin-top:10px}
+.spec b{color:var(--yellow);font-weight:500}
+
+/* Faixa de números (assinatura: listra de segurança) */
+.stripe{height:10px;background:repeating-linear-gradient(-45deg,var(--yellow) 0 14px,var(--ink) 14px 28px)}
+.nums{background:var(--yellow);color:var(--ink)}
+.nums .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding-block:34px}
+.nums div{display:grid;gap:4px}
+.nums strong{font:700 clamp(2.4rem,5vw,3.4rem)/1 var(--display);font-variant-numeric:tabular-nums}
+.nums span{font-size:.95rem;font-weight:500}
+@media (max-width:700px){.nums .wrap{grid-template-columns:repeat(2,1fr)}}
+
+/* Serviços */
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+@media (max-width:1000px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.svc-grid{grid-template-columns:1fr}}
+.svc{display:grid;grid-template-rows:auto 1fr;background:var(--paper);border:1px solid var(--line);text-decoration:none;transition:border-color .15s}
+.svc:hover{border-color:var(--ink)}
+.svc .ph{aspect-ratio:4/3;overflow:hidden;background:var(--steel)}
+.svc .ph img{width:100%;height:100%;object-fit:cover}
+.svc .tx{padding:20px;display:grid;gap:10px;align-content:start}
+.svc .tag{font:500 .75rem var(--mono);letter-spacing:.08em;color:var(--mute);text-transform:uppercase}
+.svc ul{margin:0;padding-left:18px;color:var(--mute);font-size:.95rem}
+.svc .go{font-weight:600;margin-top:6px}
+.ph-missing{display:grid;place-items:center;height:100%;color:var(--mute-dark);font:500 .8rem/1.4 var(--mono);text-align:center;padding:16px;background:repeating-linear-gradient(-45deg,#2b3036 0 10px,#262b31 10px 20px)}
+
+/* Processo */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;counter-reset:s;border-top:1px solid rgba(255,255,255,.2)}
+.steps li{list-style:none;padding:26px 22px 0 0;display:grid;gap:10px;counter-increment:s}
+.steps li::before{content:"0" counter(s);font:700 2.6rem/1 var(--display);color:var(--yellow)}
+.steps p{color:var(--mute-dark)}
+.steps{padding:0;margin:0}
+@media (max-width:860px){.steps{grid-template-columns:1fr 1fr;row-gap:28px}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}}
+
+/* Obras */
+.obras{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:900px){.obras{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.obras{grid-template-columns:1fr}}
+.obra{position:relative;overflow:hidden;background:var(--steel);color:var(--paper);aspect-ratio:4/3;max-width:100%}
+.obra img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.obra:hover img{transform:scale(1.04)}
+.obra figcaption{position:absolute;inset:auto 0 0 0;padding:40px 16px 14px;background:linear-gradient(transparent,rgba(16,18,21,.88));display:grid;gap:3px}
+.obra .t{font:600 1.25rem/1.1 var(--display);text-transform:uppercase}
+.obra .m{font:400 .75rem var(--mono);color:#cfd4d9}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.chip{font:500 .85rem var(--body);padding:8px 14px;border:1px solid var(--line);background:var(--paper);border-radius:999px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+/* Diferenciais */
+.why{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center}
+@media (max-width:860px){.why{grid-template-columns:1fr}}
+.why img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.why dl{display:grid;gap:20px;margin:24px 0 0}
+.why dt{font:600 1.3rem/1.1 var(--display);text-transform:uppercase}
+.why dd{margin:4px 0 0;color:var(--mute)}
+
+/* Depoimentos (espaço reservado) */
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:860px){.reviews{grid-template-columns:1fr}}
+.review{border:2px dashed var(--line);padding:22px;display:grid;gap:10px;color:var(--mute);background:var(--paper)}
+.review .stars{color:var(--yellow-deep);letter-spacing:2px}
+
+/* Blog cards */
+.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media (max-width:900px){.posts{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.posts{grid-template-columns:1fr}}
+.post-card{display:grid;gap:12px;text-decoration:none;align-content:start}
+.post-card .ph{aspect-ratio:16/10;overflow:hidden;background:var(--mist)}
+.post-card .ph img{width:100%;height:100%;object-fit:cover}
+.post-card .meta{font:500 .75rem var(--mono);color:var(--mute);letter-spacing:.06em;text-transform:uppercase}
+.post-card h3{font-size:1.35rem;line-height:1.1}
+.post-card:hover h3{text-decoration:underline;text-decoration-color:var(--yellow);text-decoration-thickness:3px;text-underline-offset:4px}
+
+/* CTA */
+.cta{display:grid;grid-template-columns:1.4fr 1fr;gap:32px;align-items:center}
+@media (max-width:860px){.cta{grid-template-columns:1fr}}
+.contact-lines{display:grid;gap:10px;font:500 .95rem var(--mono)}
+.contact-lines span{color:var(--mute-dark);font-family:var(--body);font-size:.8rem;display:block}
+
+/* Page heads */
+.phead{background:var(--ink);color:var(--paper);position:relative;overflow:hidden}
+.phead img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.3}
+.phead .wrap{position:relative;padding-block:clamp(48px,7vw,84px);display:grid;gap:14px}
+.crumbs{font:400 .8rem var(--mono);color:var(--mute-dark)}
+.crumbs a{color:var(--mute-dark)}
+
+/* Service detail */
+.svc-detail>*,.blog-layout>*,.article>*,.contact>*,.split>*,.why>*,.cta>*{min-width:0}
+.contact-lines div,.box,.box-light{overflow-wrap:anywhere}
+.svc-detail{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:48px;align-items:start}
+@media (max-width:900px){.svc-detail{grid-template-columns:1fr}}
+.prose{display:grid;gap:18px;max-width:70ch;min-width:0}
+.prose h2{font-size:clamp(1.7rem,3vw,2.2rem);margin-top:18px}
+.prose h3{font-size:1.25rem;margin-top:6px}
+.prose ul{margin:0;padding-left:20px;display:grid;gap:6px}
+.prose a{text-decoration-color:var(--yellow-deep);text-decoration-thickness:2px;text-underline-offset:3px}
+.aside{position:sticky;top:96px;display:grid;gap:16px}
+.box{background:var(--ink);color:var(--paper);padding:24px;display:grid;gap:14px}
+.box .contact-lines span{color:var(--mute-dark)}
+.box-light{border:1px solid var(--line);padding:22px;display:grid;gap:10px}
+.box-light a{font-weight:500}
+.faq details{border-top:1px solid var(--line);padding:16px 0}
+.faq details:last-child{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::after{content:"+";font:600 1.3rem/1 var(--mono)}
+.faq details[open] summary::after{content:"–"}
+.faq p{margin-top:10px;color:var(--mute)}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.gallery img{width:100%;aspect-ratio:1;object-fit:cover}
+@media (max-width:520px){.gallery{grid-template-columns:repeat(2,1fr)}}
+
+/* Blog list */
+.blog-layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:48px;align-items:start}
+@media (max-width:900px){.blog-layout{grid-template-columns:1fr}}
+.post-row{display:grid;grid-template-columns:220px minmax(0,1fr);gap:20px;text-decoration:none;padding-block:22px;border-bottom:1px solid var(--line)}
+.post-row .ph{aspect-ratio:16/10;overflow:hidden;background:var(--mist)}
+.post-row .ph img{width:100%;height:100%;object-fit:cover}
+.post-row .tx{display:grid;gap:8px;align-content:start;min-width:0}
+.post-row h3{font-size:1.4rem}
+.post-row p{color:var(--mute);font-size:.95rem}
+@media (max-width:560px){.post-row{grid-template-columns:1fr}}
+
+/* Post */
+.article{display:grid;grid-template-columns:240px minmax(0,1fr);gap:48px;align-items:start}
+@media (max-width:900px){.article{grid-template-columns:1fr}}
+.toc{position:sticky;top:96px;display:grid;gap:8px;font-size:.9rem}
+.toc a{color:var(--mute);text-decoration:none;border-left:2px solid var(--line);padding-left:12px}
+.toc a:hover{color:var(--ink);border-left-color:var(--yellow)}
+.post-meta{display:flex;flex-wrap:wrap;gap:8px 20px;font:400 .82rem var(--mono);color:var(--mute-dark)}
+.author{display:grid;grid-template-columns:56px 1fr;gap:14px;align-items:center;border:1px solid var(--line);padding:18px}
+.author .av{width:56px;height:56px;background:var(--ink);display:grid;place-items:center}
+.author .av img{width:42px;filter:invert(1)}
+
+/* Sobre */
+.mvv{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media (max-width:860px){.mvv{grid-template-columns:1fr}}
+.mvv div{border-top:4px solid var(--yellow);padding-top:16px;display:grid;gap:10px}
+.mvv p{color:var(--mute)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center}
+@media (max-width:860px){.split{grid-template-columns:1fr}}
+
+/* Contato */
+.contact{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:48px;align-items:start}
+@media (max-width:900px){.contact{grid-template-columns:1fr}}
+form.quote{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+form.quote .full{grid-column:1/-1}
+@media (max-width:560px){form.quote{grid-template-columns:1fr}}
+label{display:grid;gap:6px;font-weight:500;font-size:.92rem}
+input,select,textarea{font:400 1rem var(--body);padding:12px 14px;border:1px solid var(--line);border-radius:4px;background:var(--paper);color:var(--ink);width:100%}
+textarea{min-height:130px;resize:vertical}
+.ok{background:var(--mist);border-left:4px solid var(--green);padding:14px 16px}
+.map{display:grid;place-items:center;aspect-ratio:16/10;max-width:100%;background:var(--mist);border:1px solid var(--line);text-align:center;padding:20px;gap:10px}
+
+/* Rodapé */
+footer.site{background:var(--ink);color:var(--mute-dark);font-size:.92rem}
+footer.site .cols{display:grid;grid-template-columns:1.3fr 1fr 1fr 1.2fr;gap:32px;padding-block:56px 32px}
+@media (max-width:860px){footer.site .cols{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){footer.site .cols{grid-template-columns:1fr}}
+footer.site h4{font:600 1.1rem var(--display);color:var(--paper);text-transform:uppercase;letter-spacing:.04em;margin:0 0 12px}
+footer.site ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+footer.site a{text-decoration:none}
+footer.site a:hover{color:var(--paper)}
+footer.site .legal{border-top:1px solid rgba(255,255,255,.12);padding-block:18px;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;font:400 .78rem var(--mono)}
+footer.site .flogo{height:40px;width:auto;margin-bottom:14px}
+
+.wa{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:30;background:var(--green);color:#fff;text-decoration:none;font:600 .95rem var(--body);padding:14px 18px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.25);display:flex;gap:8px;align-items:center}
+.wa svg{width:20px;height:20px;fill:currentColor}
+.note{font:400 .78rem var(--mono);color:var(--mute)}
+</style>
+
+<div class="proto">PROTÓTIPO do novo site · navegue pelo menu · fotos reais do site atual · nomes de obras e depoimentos a confirmar</div>
+
+<div class="topbar"><div class="wrap">
+  <span>Fábrica: <b>BR-304, Km 507 · Parnamirim/RN</b></span>
+  <span>WhatsApp <b>(84) 99151-9641</b><span class="mail"> · <b>comercial@cromengenharia.com</b></span></span>
+</div></div>
+
+<header class="site"><div class="wrap">
+  <a class="logo" href="#home" aria-label="CROM Engenharia, início"><img src="img/logo.png" alt="CROM Engenharia" width="165" height="44"></a>
+  <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mainNav">Menu</button>
+  <nav class="main" id="mainNav" aria-label="Menu principal">
+    <a href="#home" data-nav="home">Início</a>
+    <a href="#quem-somos" data-nav="quem-somos">Quem Somos</a>
+    <div class="has-sub">
+      <a href="#servicos" data-nav="servicos">Serviços ▾</a>
+      <div class="sub">
+        <a href="#estruturas-metalicas">Estruturas Metálicas<small>galpões · coberturas · mezaninos</small></a>
+        <a href="#containers-metalicos">Containers Metálicos<small>fabricação sob medida</small></a>
+        <a href="#linha-de-vida">Linha de Vida<small>NR-35 · projeto e laudo</small></a>
+        <a href="#laudos-tecnicos-maquinas">Laudos de Máquinas<small>NR-12 · munck · escavadeiras</small></a>
+      </div>
+    </div>
+    <a href="#obras" data-nav="obras">Obras</a>
+    <a href="#blog" data-nav="blog">Blog</a>
+    <a href="#contato" data-nav="contato">Contato</a>
+    <a class="btn btn-y" href="#contato">Solicitar orçamento</a>
+  </nav>
+</div></header>
+
+<main>
+
+<!-- ================= HOME ================= -->
+<section data-page="home">
+  <div class="hero">
+    <img class="bg" src="img/obra-1287.jpg" alt="" width="1600" height="720">
+    <div class="wrap">
+      <p class="eyebrow" style="color:var(--yellow)">Estruturas metálicas · Containers · Linha de vida · Laudos</p>
+      <h1>Estruturas metálicas e containers<br><span>projetados, fabricados e montados</span> em Parnamirim/RN</h1>
+      <p class="lead">Engenharia própria, fábrica própria e equipe de montagem. Há mais de 25 anos atendendo indústrias, construtoras e empresas de todo o Brasil.</p>
+      <div class="ctas">
+        <a class="btn btn-y" href="#contato">Solicitar orçamento</a>
+        <a class="btn btn-o" href="#obras">Ver obras realizadas</a>
+      </div>
+      <div class="spec"><span>CREA-RN <b>200005964-2</b></span><span>Projetos com <b>ART</b></span><span>Normas <b>NR-35 · NR-12 · ABNT</b></span></div>
+    </div>
+  </div>
+  <div class="stripe" aria-hidden="true"></div>
+  <div class="nums"><div class="wrap">
+    <div><strong>+25</strong><span>anos de experiência</span></div>
+    <div><strong>15</strong><span>profissionais na equipe</span></div>
+    <div><strong>4</strong><span>linhas de serviço</span></div>
+    <div><strong>BR</strong><span>atendimento em todo o Brasil</span></div>
+  </div></div>
+
+  <div class="band band-mist"><div class="wrap">
+    <div class="head"><p class="eyebrow">O que fazemos</p><h2>Soluções em aço, do projeto à entrega</h2><p class="lead">Cada serviço tem engenheiro responsável e documentação técnica. Escolha a solução e veja os detalhes.</p></div>
+    <div class="svc-grid" id="homeSvc"></div>
+  </div></div>
+
+  <div class="band on-dark"><div class="wrap">
+    <div class="head"><p class="eyebrow">Como trabalhamos</p><h2>Tudo dentro de casa</h2><p class="lead">Um único fornecedor do cálculo à montagem. Menos retrabalho, prazo controlado e responsabilidade técnica clara.</p></div>
+    <ol class="steps">
+      <li><h3>Levantamento</h3><p>Visita técnica, medições e entendimento das cargas e do uso.</p></li>
+      <li><h3>Projeto e ART</h3><p>Modelagem, dimensionamento, detalhamento e ART do engenheiro.</p></li>
+      <li><h3>Fabricação</h3><p>Corte, dobra, solda e pintura na fábrica em Parnamirim/RN.</p></li>
+      <li><h3>Montagem</h3><p>Equipe própria em campo, com planejamento de içamento e segurança.</p></li>
+    </ol>
+  </div></div>
+
+  <div class="band"><div class="wrap">
+    <div class="head"><p class="eyebrow">Obras realizadas</p><h2>Estruturas que já estão de pé</h2><p class="lead">Coberturas, escadas, estacionamentos e montagens executadas pela CROM.</p></div>
+    <div class="obras" id="homeObras"></div>
+    <p style="margin-top:28px"><a class="btn btn-ink" href="#obras">Ver todas as obras</a></p>
+  </div></div>
+
+  <div class="band band-mist"><div class="wrap why">
+    <img src="img/obra-1259.jpg" alt="Soldador fabricando treliça metálica na fábrica da CROM" loading="lazy" width="1100" height="1063">
+    <div>
+      <p class="eyebrow">Por que a CROM</p>
+      <h2>Fábrica e engenharia no mesmo endereço</h2>
+      <dl>
+        <div><dt>Fábrica própria</dt><dd>Controle de qualidade e prazo na fabricação, sem depender de terceiros.</dd></div>
+        <div><dt>Engenheiros responsáveis</dt><dd>Projetos, laudos e inspeções com ART e registro no CREA-RN.</dd></div>
+        <div><dt>Normas em dia</dt><dd>NR-35 para trabalho em altura, NR-12 para máquinas e normas ABNT de estruturas de aço.</dd></div>
+        <div><dt>Atendimento nacional</dt><dd>Base em Parnamirim/RN e equipe preparada para obras em todo o país.</dd></div>
+      </dl>
+    </div>
+  </div></div>
+
+  <div class="band"><div class="wrap">
+    <div class="head"><p class="eyebrow">Clientes</p><h2>O que dizem sobre a CROM</h2></div>
+    <div class="reviews">
+      <div class="review"><span class="stars">★★★★★</span><p>Espaço para depoimento real de cliente (pode vir das avaliações do Google).</p><p class="note">NOME · EMPRESA · CIDADE</p></div>
+      <div class="review"><span class="stars">★★★★★</span><p>Espaço para depoimento real de cliente.</p><p class="note">NOME · EMPRESA · CIDADE</p></div>
+      <div class="review"><span class="stars">★★★★★</span><p>Espaço para depoimento real de cliente.</p><p class="note">NOME · EMPRESA · CIDADE</p></div>
+    </div>
+    <p class="note" style="margin-top:14px">Logos de clientes e parceiros entram aqui assim que forem enviados.</p>
+  </div></div>
+
+  <div class="band band-mist"><div class="wrap">
+    <div class="head"><p class="eyebrow">Blog técnico</p><h2>Conteúdo para quem decide a obra</h2></div>
+    <div class="posts" id="homePosts"></div>
+    <p style="margin-top:28px"><a class="btn btn-ink" href="#blog">Ver todos os artigos</a></p>
+  </div></div>
+</section>
+
+<!-- ================= QUEM SOMOS ================= -->
+<section data-page="quem-somos">
+  <div class="phead"><img class="bg" src="img/obra-1272.jpg" alt=""><div class="wrap">
+    <p class="crumbs"><a href="#home">Início</a> / Quem Somos</p>
+    <h1>Quem Somos</h1>
+    <p class="lead">Engenharia mecânica e estruturas metálicas há mais de 25 anos, com fábrica em Parnamirim/RN.</p>
+  </div></div>
+  <div class="band"><div class="wrap split">
+    <div class="prose">
+      <p class="eyebrow">Nossa empresa</p>
+      <h2>CROM Engenharia</h2>
+      <p>A CROM Engenharia oferece soluções para as mais diversas necessidades do mercado em <strong>estruturas metálicas e engenharia mecânica</strong>. Contamos com profissionais habilitados para atender, com segurança, projetos complexos e exigentes.</p>
+      <p>São mais de 25 anos de experiência e uma equipe de 15 profissionais treinados. Atendemos empresas nacionais e multinacionais em todo o Brasil, a partir da nossa fábrica na BR-304, em Parnamirim/RN.</p>
+      <p class="note">CNPJ 34.629.759/0001-50 · CREA-RN 200005964-2</p>
+    </div>
+    <img src="img/obra-1259.jpg" alt="Fabricação de treliças metálicas" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover">
+  </div></div>
+  <div class="stripe" aria-hidden="true"></div>
+  <div class="nums"><div class="wrap">
+    <div><strong>+25</strong><span>anos de experiência</span></div>
+    <div><strong>15</strong><span>profissionais</span></div>
+    <div><strong>4</strong><span>linhas de serviço</span></div>
+    <div><strong>BR</strong><span>atendimento nacional</span></div>
+  </div></div>
+  <div class="band band-mist"><div class="wrap">
+    <div class="mvv">
+      <div><h3>Missão</h3><p>Proporcionar aos nossos clientes soluções personalizadas, confiáveis e de qualidade superior, atendendo às suas necessidades e superando expectativas.</p></div>
+      <div><h3>Visão</h3><p>Ser reconhecida como empresa líder em engenharia mecânica, com ampla gama de serviços e um ambiente de trabalho onde a equipe é valorizada.</p></div>
+      <div><h3>Valores</h3><p>Profissionalismo, ética e integridade. Respeito a clientes, parceiros e colaboradores, transparência e busca constante pela excelência.</p></div>
+    </div>
+  </div></div>
+  <div class="band"><div class="wrap">
+    <div class="head"><p class="eyebrow">Na prática</p><h2>Nossa equipe em obra</h2></div>
+    <div class="gallery">
+      <img src="img/obra-1272.jpg" alt="Montagem com caminhão munck" loading="lazy">
+      <img src="img/obra-1113.jpg" alt="Montagem de estrutura em terraço" loading="lazy">
+      <img src="img/obra-1286.jpg" alt="Estrutura metálica em montagem sobre edifício" loading="lazy">
+    </div>
+  </div></div>
+</section>
+
+<!-- ================= SERVIÇOS ================= -->
+<section data-page="servicos">
+  <div class="phead"><img class="bg" src="img/obra-952.jpg" alt=""><div class="wrap">
+    <p class="crumbs"><a href="#home">Início</a> / Serviços</p>
+    <h1>Serviços</h1>
+    <p class="lead">Estruturas metálicas, containers, linha de vida e laudos técnicos. Fábrica em Parnamirim/RN e atendimento em todo o Brasil.</p>
+  </div></div>
+  <div class="band"><div class="wrap"><div class="svc-grid" id="allSvc"></div></div></div>
+  <div class="band on-dark"><div class="wrap cta">
+    <div><p class="eyebrow">Orçamento</p><h2>Não sabe qual solução é a ideal?</h2><p class="lead" style="margin-top:12px">Conte o que você precisa. Um engenheiro analisa e indica o caminho.</p></div>
+    <div><a class="btn btn-y" href="#contato">Falar com um engenheiro</a></div>
+  </div></div>
+</section>
+
+<!-- ================= SERVIÇO (template) ================= -->
+<section data-page="servico" id="svcPage"></section>
+
+<!-- ================= OBRAS ================= -->
+<section data-page="obras">
+  <div class="phead"><img class="bg" src="img/obra-1390.jpg" alt=""><div class="wrap">
+    <p class="crumbs"><a href="#home">Início</a> / Obras</p>
+    <h1>Obras realizadas</h1>
+    <p class="lead">Cada obra terá página própria com local, cliente, área, prazo e fotos. Isso ajuda clientes a confiar e o Google a encontrar a CROM.</p>
+  </div></div>
+  <div class="band"><div class="wrap">
+    <div class="chips" id="obraChips" role="group" aria-label="Filtrar obras por tipo"></div>
+    <div class="obras" id="allObras"></div>
+  </div></div>
+</section>
+
+<!-- ================= BLOG ================= -->
+<section data-page="blog">
+  <div class="phead"><div class="wrap">
+    <p class="crumbs"><a href="#home">Início</a> / Blog</p>
+    <h1>Blog técnico</h1>
+    <p class="lead">Preços, normas, projetos e dicas práticas sobre estruturas metálicas, containers, linha de vida e máquinas.</p>
+  </div></div>
+  <div class="band"><div class="wrap blog-layout">
+    <div>
+      <div class="chips" id="blogChips" role="group" aria-label="Filtrar por categoria"></div>
+      <div id="blogList"></div>
+    </div>
+    <aside class="aside">
+      <div class="box"><p class="eyebrow">Orçamento</p><h3>Precisa de uma solução para sua obra?</h3><a class="btn btn-y" href="#contato">Falar com um engenheiro</a></div>
+      <div class="box-light"><p class="eyebrow">Serviços</p><a href="#estruturas-metalicas">Estruturas Metálicas</a><a href="#containers-metalicos">Containers Metálicos</a><a href="#linha-de-vida">Linha de Vida NR-35</a><a href="#laudos-tecnicos-maquinas">Laudos de Máquinas</a></div>
+    </aside>
+  </div></div>
+</section>
+
+<!-- ================= POST (modelo) ================= -->
+<section data-page="post">
+  <div class="phead"><div class="wrap">
+    <p class="crumbs"><a href="#home">Início</a> / <a href="#blog">Blog</a> / Linha de Vida</p>
+    <h1 style="text-transform:none;font-size:clamp(2.2rem,5vw,3.6rem)">Linha de vida NR-35: o que é e quando é obrigatória?</h1>
+    <div class="post-meta"><span>LINHA DE VIDA</span><span>14 ago 2026</span><span>14 min de leitura</span><span>Equipe de engenharia CROM</span></div>
+  </div></div>
+  <div class="band"><div class="wrap article">
+    <nav class="toc" aria-label="Neste artigo">
+      <p class="eyebrow">Neste artigo</p>
+      <a href="#post">O que é linha de vida?</a>
+      <a href="#post">O que a NR-35 diz</a>
+      <a href="#post">Quando é obrigatória?</a>
+      <a href="#post">Tipos de linha de vida</a>
+      <a href="#post">Precisa de projeto e ART?</a>
+      <a href="#post">Perguntas frequentes</a>
+    </nav>
+    <div class="prose">
+      <img src="img/post-1426.jpg" alt="Linha de vida NR-35" style="width:100%">
+      <p>A <strong>linha de vida NR-35</strong> é um dos sistemas utilizados para proteção de trabalhadores expostos ao risco de queda durante atividades realizadas em altura. Ela pode ser instalada em coberturas, telhados, estruturas metálicas, fachadas, áreas industriais e plataformas.</p>
+      <p>Porém, uma dúvida é muito comum entre empresas, gestores e profissionais de segurança: <strong>a linha de vida é obrigatória pela NR-35?</strong></p>
+      <p>A NR-35 estabelece requisitos e medidas de prevenção para o trabalho em altura, mas isso não significa que toda atividade em altura precise de uma linha de vida. A solução deve ser definida considerando a atividade, os riscos e as medidas de prevenção aplicáveis.</p>
+      <h2>O que é linha de vida?</h2>
+      <p>A linha de vida é um componente de um <strong>sistema de proteção contra quedas</strong> que permite ao trabalhador conectar equipamentos apropriados a um sistema de ancoragem durante o deslocamento ou a execução de atividades em altura.</p>
+      <ul><li>pontos de ancoragem;</li><li>cabo ou trilho;</li><li>suportes e elementos intermediários;</li><li>absorvedores de energia, quando aplicáveis;</li><li>conectores e dispositivos móveis.</li></ul>
+      <div class="box"><p class="eyebrow">Serviço CROM</p><h3>Projeto, instalação e recertificação de linha de vida com ART</h3><a class="btn btn-y" href="#linha-de-vida">Conhecer o serviço</a></div>
+      <h2>O que a NR-35 diz sobre linha de vida?</h2>
+      <p>A NR-35 trata da segurança no trabalho em altura e estabelece requisitos para o planejamento, a organização e a execução dessas atividades…</p>
+      <p class="note">[o restante do artigo atual continua aqui, sem alteração de texto ou URL]</p>
+      <div class="author"><div class="av"><img src="img/logo.png" alt=""></div><div><strong>Equipe de engenharia CROM</strong><p class="note">Conteúdo revisado por engenheiro responsável · CREA-RN 200005964-2</p></div></div>
+      <h2>Leia também</h2>
+      <div class="posts" id="relPosts"></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ================= CONTATO ================= -->
+<section data-page="contato">
+  <div class="phead"><img class="bg" src="img/obra-951.jpg" alt=""><div class="wrap">
+    <p class="crumbs"><a href="#home">Início</a> / Contato</p>
+    <h1>Contato e orçamento</h1>
+    <p class="lead">Respondemos em horário comercial. Para agilizar, conte o tipo de serviço, a cidade e as medidas aproximadas.</p>
+  </div></div>
+  <div class="band"><div class="wrap contact">
+    <div>
+      <form class="quote" id="quoteForm" novalidate>
+        <label>Nome<input id="f-nome" name="nome" autocomplete="name" required></label>
+        <label>Empresa<input id="f-empresa" name="empresa" autocomplete="organization"></label>
+        <label>WhatsApp<input id="f-tel" name="tel" type="tel" autocomplete="tel" placeholder="(84) 9 0000-0000" required></label>
+        <label>E-mail<input id="f-email" name="email" type="email" autocomplete="email"></label>
+        <label>Serviço<select id="f-servico" name="servico"><option>Estrutura metálica</option><option>Container metálico</option><option>Linha de vida</option><option>Laudo de máquina</option><option>Outro</option></select></label>
+        <label>Cidade / UF<input id="f-cidade" name="cidade" placeholder="Parnamirim/RN"></label>
+        <label class="full">Descreva a necessidade<textarea id="f-msg" name="msg" placeholder="Ex.: cobertura metálica de 20 x 30 m para estacionamento"></textarea></label>
+        <div class="full"><button class="btn btn-y" type="submit">Enviar pedido de orçamento</button></div>
+        <div class="full ok" id="formOk" hidden>Protótipo: no site real, este pedido vai para comercial@cromengenharia.com e o cliente recebe a confirmação na tela.</div>
+      </form>
+    </div>
+    <div style="display:grid;gap:20px">
+      <div class="box">
+        <p class="eyebrow">Fale direto</p>
+        <div class="contact-lines">
+          <div><span>WhatsApp comercial</span>(84) 99151-9641</div>
+          <div><span>Telefones</span>(84) 99650-7337 · (84) 99106-0289</div>
+          <div><span>E-mail</span>comercial@cromengenharia.com</div>
+          <div><span>Fábrica</span>BR-304, Km 507, s/n · Encanto Verde<br>Parnamirim/RN · 59146-750</div>
+        </div>
+        <a class="btn btn-y" href="https://wa.me/5584991519641" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+      </div>
+      <div class="map"><div><strong>Mapa da fábrica</strong><p class="note">No site real: mapa do Google com o endereço da BR-304.</p><p style="margin-top:10px"><a href="https://www.google.com/maps/search/?api=1&query=BR-304+Km+507+Parnamirim+RN" target="_blank" rel="noopener">Abrir no Google Maps</a></p></div></div>
+    </div>
+  </div></div>
+</section>
+
+</main>
+
+<div class="stripe" aria-hidden="true"></div>
+<footer class="site"><div class="wrap">
+  <div class="cols">
+    <div><img class="flogo" src="img/logo-branco.png" alt="CROM Engenharia" width="150" height="40"><p>Projeto, fabricação e montagem de estruturas metálicas, containers metálicos, linha de vida e laudos técnicos.</p></div>
+    <div><h4>Serviços</h4><ul><li><a href="#estruturas-metalicas">Estruturas Metálicas</a></li><li><a href="#containers-metalicos">Containers Metálicos</a></li><li><a href="#linha-de-vida">Linha de Vida</a></li><li><a href="#laudos-tecnicos-maquinas">Laudos de Máquinas</a></li></ul></div>
+    <div><h4>Empresa</h4><ul><li><a href="#quem-somos">Quem Somos</a></li><li><a href="#obras">Obras</a></li><li><a href="#blog">Blog</a></li><li><a href="#contato">Contato</a></li></ul></div>
+    <div><h4>Contato</h4><ul><li>(84) 99151-9641</li><li>comercial@cromengenharia.com</li><li>BR-304, Km 507 · Encanto Verde<br>Parnamirim/RN · 59146-750</li></ul></div>
+  </div>
+  <div class="legal"><span>© 2026 CROM Engenharia · CNPJ 34.629.759/0001-50</span><span>CREA-RN 200005964-2</span></div>
+</div></footer>
+
+<a class="wa" href="https://wa.me/5584991519641" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg>WhatsApp</a>
+
+<script>
+const SVC={
+ 'estruturas-metalicas':{tag:'Projeto · fabricação · montagem',name:'Estruturas Metálicas',h1:'Estruturas metálicas em Parnamirim/RN',img:'obra-1287',
+  lead:'Galpões, coberturas, mezaninos, marquises, escadas e torres. Do cálculo estrutural à montagem em campo, com ART.',
+  bullets:['Galpões industriais e comerciais','Coberturas e estacionamentos','Mezaninos e escadas','Torres e suportes fotovoltaicos'],
+  body:`<p>A CROM faz o <strong>projeto, a fabricação e a montagem de estruturas metálicas</strong> sob medida para indústrias, comércios, centros logísticos e obras em geral, seguindo as normas técnicas vigentes.</p>
+  <h2>O que fabricamos e montamos</h2><ul><li><strong>Galpões industriais e comerciais</strong>, com grandes vãos livres</li><li><strong>Coberturas metálicas</strong> para áreas industriais, estacionamentos e pátios</li><li><strong>Mezaninos</strong> para ampliar a área útil</li><li><strong>Marquises</strong> e estruturas de fachada</li><li><strong>Escadas metálicas</strong> de diversos tipos</li><li><strong>Torres estaiadas e autoportantes</strong></li><li><strong>Suportes para placas fotovoltaicas</strong></li></ul>
+  <h2>Por que estrutura metálica?</h2><p>Obra mais rápida, vãos maiores e canteiro mais limpo, porque boa parte do trabalho acontece na fábrica. Compare em <a href="#post">Estrutura metálica ou concreto: qual escolher</a>.</p>`,
+  gallery:['obra-1390','obra-952','obra-1215'],
+  faq:[['Quanto custa uma estrutura metálica?','Depende do tipo de estrutura, dos vãos, das cargas, do peso de aço e da montagem. Explicamos o cálculo no artigo “Quanto custa uma estrutura metálica”.'],['Vocês atendem fora do RN?','Sim. A fábrica fica em Parnamirim/RN e atendemos empresas em todo o Brasil.'],['O projeto acompanha ART?','Sim. Os projetos são feitos por engenheiros habilitados, com emissão de ART.']]},
+ 'containers-metalicos':{tag:'Fabricação sob medida',name:'Containers Metálicos',h1:'Fabricação de containers metálicos',img:null,
+  lead:'Almoxarifado, escritório de obra, depósito, vestiário e projetos especiais. Também fazemos adaptações e reforços com projeto de engenharia.',
+  bullets:['Almoxarifado e depósito','Escritório de obra','Vestiário e apoio','Projetos personalizados'],
+  body:`<p>A CROM <strong>fabrica containers metálicos</strong> sob medida para canteiros de obras, indústrias e empresas que precisam de espaços modulares resistentes e prontos para uso.</p>
+  <h2>Modelos que fabricamos</h2><ul><li><strong>Container almoxarifado</strong> para materiais e ferramentas</li><li><strong>Container escritório</strong> para obra</li><li><strong>Container depósito</strong></li><li><strong>Container vestiário e de apoio</strong></li><li><strong>Containers personalizados</strong>, com layout, portas, janelas e instalações sob medida</li></ul>
+  <h2>Medidas</h2><p>O modelo mais usado tem cerca de <span style="font-family:var(--mono)">6,00 × 2,40 m</span>, mas fabricamos em outros tamanhos conforme a necessidade. Abrir portas e janelas altera a estrutura, por isso toda modificação passa por análise de engenharia.</p>`,
+  gallery:[null,null,null],
+  faq:[['Vocês fabricam containers sob medida?','Sim. Definimos tamanho, layout, aberturas e instalações de acordo com o uso.'],['Qual container é melhor para canteiro de obras?','Depende da função: almoxarifado, escritório, depósito ou vestiário. Explicamos no artigo sobre containers para canteiro.'],['Vocês entregam fora do RN?','Sim, atendemos empresas em todo o Brasil.']]},
+ 'linha-de-vida':{tag:'NR-35 · trabalho em altura',name:'Linha de Vida',h1:'Linha de vida e sistemas de ancoragem',img:'obra-1286',
+  lead:'Projeto, instalação, inspeção e recertificação de linhas de vida e pontos de ancoragem conforme a NR-35, com ART.',
+  bullets:['Projeto sob medida','Fornecimento e instalação','Inspeção inicial e periódica','Laudo e recertificação'],
+  body:`<p>A <strong>linha de vida</strong> permite ao trabalhador se deslocar com segurança em altura, reduzindo o risco de quedas. A CROM faz o projeto, a instalação, a inspeção e a recertificação, seguindo a NR-35 e as normas aplicáveis.</p>
+  <h2>Onde instalamos</h2><ul><li>Telhados e coberturas de galpões</li><li>Estruturas metálicas e plataformas industriais</li><li>Fachadas, escadas e acessos verticais</li><li>Áreas de manutenção de máquinas</li></ul>
+  <h2>Quando é obrigatória?</h2><p>Sempre que houver trabalho em altura e a análise de risco indicar um sistema de proteção contra quedas. Veja em <a href="#post">Linha de vida NR-35: o que é e quando é obrigatória</a>.</p>`,
+  gallery:['obra-1286','obra-1113','obra-1115'],
+  faq:[['Quanto custa instalar uma linha de vida?','O valor depende do tipo de sistema, da extensão, da estrutura de fixação e da documentação.'],['A linha de vida precisa de ART?','Sim. Projeto e instalação devem ter responsável técnico habilitado, com ART.'],['Vocês inspecionam linhas já instaladas?','Sim. Fazemos inspeção periódica, laudo técnico e recertificação.']]},
+ 'laudos-tecnicos-maquinas':{tag:'NR-12 · máquinas pesadas',name:'Laudos de Máquinas',h1:'Laudo técnico de máquinas pesadas',img:'obra-1272',
+  lead:'Laudos de caminhão munck, escavadeiras, retroescavadeiras, empilhadeiras e plataformas elevatórias, feitos por engenheiros mecânicos, com ART.',
+  bullets:['Caminhão munck','Escavadeiras e retroescavadeiras','Empilhadeiras','Plataformas elevatórias'],
+  body:`<p>Com fotos, vídeos e checklists, avaliamos as condições de <strong>segurança, desempenho e conformidade</strong> do equipamento com as normas vigentes, incluindo a NR-12.</p>
+  <h2>Quando o laudo é necessário?</h2><ul><li>Na compra ou venda de máquinas usadas</li><li>Depois de acidentes, impactos, trincas ou deformações</li><li>Após reparos estruturais ou modificações</li><li>Para adequação às normas e exigências de clientes e fiscalização</li></ul>
+  <h2>Laudo técnico e NR-12</h2><p>O laudo ajuda a identificar o que precisa ser adequado e a planejar manutenções preventivas e corretivas.</p>`,
+  gallery:['obra-1272',null,null],
+  faq:[['O laudo é emitido com ART?','Sim. Os laudos são elaborados por engenheiros mecânicos habilitados, com ART.'],['Vocês atendem em outras cidades?','Sim. Estamos em Parnamirim/RN e atendemos todo o Brasil.']]}
+};
+const OBRAS=[
+ ['obra-1287','Cobertura em treliça metálica','Coberturas'],['obra-952','Estacionamento coberto','Coberturas'],['obra-1215','Escada metálica comercial','Escadas'],
+ ['obra-1272','Içamento com caminhão munck','Montagem'],['obra-1390','Cobertura de estacionamento','Coberturas'],['obra-1259','Fabricação de treliças','Fabricação'],
+ ['obra-1285','Cobertura com beiral metálico','Coberturas'],['obra-1286','Estrutura sobre edifício','Montagem'],['obra-1113','Montagem em terraço','Montagem'],
+ ['obra-1394','Cobertura em área comercial','Coberturas'],['obra-1399','Treliça metálica pronta para montagem','Fabricação'],['obra-1402','Marquise de fachada','Marquises'],
+ ['obra-951','Cobertura com pilares metálicos','Coberturas'],['obra-1288','Estrutura vista do alto','Montagem'],['obra-1115','Cobertura em terraço','Coberturas']];
+const CATS={c:'Containers',e:'Estruturas Metálicas',l:'Linha de Vida',m:'Máquinas'};
+const POSTS=[
+ ['base-para-container-fundacao','Base para container: precisa de fundação para instalar?','c','28 set 2026',1486,13],
+ ['container-com-porta-e-janela','Container com porta e janela: quais cuidados tomar ao modificar a estrutura?','c','28 set 2026',1483,13],
+ ['corte-container-maritimo-reforco-estrutural','Pode cortar container marítimo? Veja quando é necessário reforço estrutural','c','23 set 2026',1480,13],
+ ['container-para-guardar-ferramentas','Container para guardar ferramentas e materiais na obra: qual escolher?','c','23 set 2026',1477,13],
+ ['container-6x240-medidas-capacidade','Container 6×2,40: medidas, capacidade e principais aplicações','c','15 set 2026',1473,12],
+ ['container-escritorio-para-obra','Container escritório para obra: medidas, estrutura e o que precisa ter','c','15 set 2026',1470,13],
+ ['container-para-canteiro-de-obras','Container para canteiro de obras: quais modelos podem ser utilizados?','c','11 set 2026',1467,13],
+ ['container-almoxarifado-para-obra','Container almoxarifado para obra: medidas, estrutura e como escolher','c','11 set 2026',1464,14],
+ ['nr-12-para-maquinas','NR-12 para máquinas: quando é obrigatório e o que sua empresa precisa fazer?','m','26 ago 2026',1449,18],
+ ['galpao-metalico-vantagens-tipos','Galpão metálico: vantagens, tipos e quando vale a pena','e','26 ago 2026',1446,13],
+ ['projeto-de-estrutura-metalica','Projeto de estrutura metálica: como funciona? Entenda todas as etapas','e','26 ago 2026',1443,16],
+ ['estrutura-metalica-ou-concreto','Estrutura metálica ou concreto: qual escolher para sua obra?','e','19 ago 2026',1438,15],
+ ['laudo-tecnico-maquinas-pesadas','Laudo técnico de máquinas pesadas: quando é necessário?','m','19 ago 2026',1435,14],
+ ['quanto-custa-instalar-linha-de-vida','Quanto custa instalar uma linha de vida? Entenda o preço e como é calculado','l','19 ago 2026',1432,13],
+ ['estrutura-metalica-preco-m2','Estrutura metálica: preço por m², como calcular e o que influencia o valor','e','17 ago 2026',1429,12],
+ ['linha-de-vida-nr-35','Linha de vida NR-35: o que é e quando é obrigatória?','l','14 ago 2026',1426,14],
+ ['quanto-custa-galpao-estrutura-metalica','Quanto custa construir um galpão de estrutura metálica?','e','13 ago 2026',1423,12],
+ ['quanto-custa-estrutura-metalica','Quanto custa uma estrutura metálica? Veja preços, fatores e como calcular','e','13 ago 2026',1419,12]];
+
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const ph=(img,alt)=>img?`<img src="img/${img}.jpg" alt="${esc(alt)}" loading="lazy">`:`<div class="ph-missing">Foto real do container<br>a enviar</div>`;
+const svcCard=(k)=>{const s=SVC[k];return `<a class="svc" href="#${k}"><div class="ph">${ph(s.img,s.name)}</div><div class="tx"><span class="tag">${s.tag}</span><h3>${s.name}</h3><ul>${s.bullets.map(b=>`<li>${b}</li>`).join('')}</ul><span class="go">Ver serviço →</span></div></a>`};
+const obraCard=o=>`<figure class="obra" style="margin:0"><img src="img/${o[0]}.jpg" alt="${esc(o[1])}" loading="lazy"><figcaption><span class="t">${o[1]}</span><span class="m">${o[2].toUpperCase()} · LOCAL E CLIENTE A CONFIRMAR</span></figcaption></figure>`;
+const postCard=p=>`<a class="post-card" href="#post"><div class="ph"><img src="img/post-${p[4]}.jpg" alt="" loading="lazy"></div><span class="meta">${CATS[p[2]]} · ${p[5]} min</span><h3>${esc(p[1])}</h3></a>`;
+const postRow=p=>`<a class="post-row" href="#post"><div class="ph"><img src="img/post-${p[4]}.jpg" alt="" loading="lazy"></div><div class="tx"><span class="eyebrow">${CATS[p[2]]} · ${p[3]} · ${p[5]} min de leitura</span><h3>${esc(p[1])}</h3><p>Leia o guia completo da equipe de engenharia da CROM.</p></div></a>`;
+
+$('#homeSvc').innerHTML=$('#allSvc').innerHTML=Object.keys(SVC).map(svcCard).join('');
+$('#homeObras').innerHTML=OBRAS.slice(0,6).map(obraCard).join('');
+$('#homePosts').innerHTML=POSTS.slice(0,3).map(postCard).join('');
+$('#relPosts').innerHTML=[POSTS[13],POSTS[10],POSTS[9]].map(postCard).join('');
+
+function chips(el,items,onPick){
+  el.innerHTML=items.map((t,i)=>`<button class="chip" type="button" aria-pressed="${i===0}">${t}</button>`).join('');
+  el.addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;el.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed',c===b));onPick(b.textContent)});
+}
+const obraTipos=['Todas',...new Set(OBRAS.map(o=>o[2]))];
+const drawObras=t=>$('#allObras').innerHTML=OBRAS.filter(o=>t==='Todas'||o[2]===t).map(obraCard).join('');
+chips($('#obraChips'),obraTipos,drawObras);drawObras('Todas');
+const drawBlog=t=>$('#blogList').innerHTML=POSTS.filter(p=>t==='Todos'||CATS[p[2]]===t).map(postRow).join('');
+chips($('#blogChips'),['Todos',...Object.values(CATS)],drawBlog);drawBlog('Todos');
+
+function renderSvc(k){
+  const s=SVC[k];
+  $('#svcPage').innerHTML=`<div class="phead">${s.img?`<img class="bg" src="img/${s.img}.jpg" alt="">`:''}<div class="wrap">
+   <p class="crumbs"><a href="#home">Início</a> / <a href="#servicos">Serviços</a> / ${s.name}</p>
+   <h1>${s.h1}</h1><p class="lead">${s.lead}</p>
+   <div class="spec"><span>Fábrica em <b>Parnamirim/RN</b></span><span>Atendimento <b>em todo o Brasil</b></span><span>Engenheiro responsável com <b>ART</b></span></div></div></div>
+  <div class="band"><div class="wrap svc-detail">
+   <div class="prose">${s.body}
+    <div class="gallery">${s.gallery.map(g=>g?`<img src="img/${g}.jpg" alt="${esc(s.name)}" loading="lazy">`:`<div class="ph-missing" style="aspect-ratio:1">Foto real a enviar</div>`).join('')}</div>
+    <h2>Perguntas frequentes</h2>
+    <div class="faq">${s.faq.map(f=>`<details><summary>${f[0]}</summary><p>${f[1]}</p></details>`).join('')}</div>
+   </div>
+   <aside class="aside">
+    <div class="box"><p class="eyebrow">Orçamento</p><h3>Solicite uma proposta de ${s.name.toLowerCase()}</h3>
+     <div class="contact-lines"><div><span>WhatsApp</span>(84) 99151-9641</div><div><span>E-mail</span>comercial@cromengenharia.com</div></div>
+     <a class="btn btn-y" href="#contato">Solicitar orçamento</a></div>
+    <div class="box-light"><p class="eyebrow">Outros serviços</p>${Object.keys(SVC).filter(x=>x!==k).map(x=>`<a href="#${x}">${SVC[x].name}</a>`).join('')}</div>
+   </aside></div></div>`;
+}
+
+const PAGES=['home','quem-somos','servicos','obras','blog','post','contato'];
+function route(){
+  let h=(location.hash||'#home').slice(1);
+  let page=h;
+  if(SVC[h]){renderSvc(h);page='servico'}
+  else if(!PAGES.includes(h)){page='home';h='home'}
+  document.querySelectorAll('section[data-page]').forEach(s=>s.classList.toggle('active',s.dataset.page===page));
+  document.querySelectorAll('[data-nav]').forEach(a=>a.toggleAttribute('aria-current',a.dataset.nav===(page==='servico'?'servicos':page==='post'?'blog':page)));
+  document.querySelectorAll('[data-nav][aria-current]').forEach(a=>a.setAttribute('aria-current','page'));
+  $('#mainNav').classList.remove('open');$('#menuToggle').setAttribute('aria-expanded','false');
+  window.scrollTo(0,0);
+}
+addEventListener('hashchange',route);route();
+$('#menuToggle').addEventListener('click',()=>{const o=$('#mainNav').classList.toggle('open');$('#menuToggle').setAttribute('aria-expanded',o)});
+$('#quoteForm').addEventListener('submit',e=>{e.preventDefault();$('#formOk').hidden=false});
+</script>
