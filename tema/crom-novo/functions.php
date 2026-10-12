@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'CROM_VER', '1.0.0' );
+define( 'CROM_VER', '1.0.2' );
 define( 'CROM_WHATS', '5584991519641' );
 define( 'CROM_EMAIL', 'comercial@cromengenharia.com' );
 
@@ -72,34 +72,52 @@ add_filter( 'template_include', function ( $template ) {
 	return $template;
 }, 99 );
 
-/* Estilos: no layout novo carrega só o necessário e remove Elementor/Astra/addons. */
+/* Arquivos: no layout novo carrega só o CSS/JS do tema e remove o que Elementor, Astra e addons colocam na página. */
 add_action( 'wp_enqueue_scripts', function () {
 	if ( ! crom_usa_layout() ) {
 		return;
 	}
+	wp_enqueue_style( 'crom', get_stylesheet_directory_uri() . '/assets/crom.css', array(), CROM_VER );
+	wp_enqueue_script( 'crom', get_stylesheet_directory_uri() . '/assets/crom.js', array(), CROM_VER, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+}, 999 );
+
+function crom_limpa_arquivos() {
+	if ( ! crom_usa_layout() ) {
+		return;
+	}
 	global $wp_styles, $wp_scripts;
-	$fora = '/^(elementor|e-|premium|pa-|bdt|prime-slider|astra|swiper|font-awesome|fa-|eael|google-fonts-|ht_ctc|ht-ctc|wp-block-library-theme)/';
+	$css_ok = array( 'crom', 'wp-block-library', 'global-styles', 'classic-theme-styles', 'core-block-supports', 'wp-img-auto-sizes-contain' );
+	$js_ok  = array( 'crom' );
 	foreach ( (array) $wp_styles->queue as $h ) {
-		if ( preg_match( $fora, $h ) ) {
+		if ( ! in_array( $h, $css_ok, true ) ) {
 			wp_dequeue_style( $h );
 		}
 	}
 	foreach ( (array) $wp_scripts->queue as $h ) {
-		if ( preg_match( $fora, $h ) ) {
+		if ( ! in_array( $h, $js_ok, true ) ) {
 			wp_dequeue_script( $h );
 		}
 	}
-	wp_enqueue_style( 'crom-fonts', 'https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap', array(), null );
-	wp_enqueue_style( 'crom', get_stylesheet_directory_uri() . '/assets/crom.css', array(), CROM_VER );
-	wp_enqueue_script( 'crom', get_stylesheet_directory_uri() . '/assets/crom.js', array(), CROM_VER, true );
-}, 999 );
+}
+add_action( 'wp_print_styles', 'crom_limpa_arquivos', 9999 );
+add_action( 'wp_print_scripts', 'crom_limpa_arquivos', 9999 );
+add_action( 'wp_footer', 'crom_limpa_arquivos', 19 );
+add_action( 'wp_print_footer_scripts', 'crom_limpa_arquivos', 1 );
 
-add_filter( 'wp_resource_hints', function ( $urls, $rel ) {
-	if ( 'preconnect' === $rel && crom_usa_layout() ) {
-		$urls[] = array( 'href' => 'https://fonts.gstatic.com', 'crossorigin' );
+/* Pré-carrega as duas fontes que aparecem primeiro na tela. */
+add_action( 'wp_head', function () {
+	if ( ! crom_usa_layout() ) {
+		return;
 	}
-	return $urls;
-}, 10, 2 );
+	$u = get_stylesheet_directory_uri() . '/assets/fonts/';
+	foreach ( array( 'IBMPlexSans-400-latin.woff2', 'BarlowCondensed-700-latin.woff2' ) as $f ) {
+		echo '<link rel="preload" href="' . esc_url( $u . $f ) . '" as="font" type="font/woff2" crossorigin>' . "\n";
+	}
+}, 2 );
+
+/* Remove os emojis do WordPress (script e CSS desnecessários). */
+remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+remove_action( 'wp_print_styles', 'print_emoji_styles' );
 
 /* Tempo de leitura em minutos. */
 function crom_minutos( $post_id = null ) {
