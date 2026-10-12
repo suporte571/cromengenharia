@@ -1,0 +1,151 @@
+--- antes
++++ depois
+@@ -222,4 +222,4 @@
+ 
+-<!-- wp:heading {"level":1} -->
+-<h1 class="wp-block-heading"><strong>Quais são as vantagens da estrutura metálica?</strong></h1>
++<!-- wp:heading -->
++<h2 class="wp-block-heading"><strong>Quais são as vantagens da estrutura metálica?</strong></h2>
+ <!-- /wp:heading -->
+@@ -418,4 +418,4 @@
+ 
+-<!-- wp:heading {"level":1} -->
+-<h1 class="wp-block-heading"><strong>Quais são as desvantagens da estrutura metálica?</strong></h1>
++<!-- wp:heading -->
++<h2 class="wp-block-heading"><strong>Quais são as desvantagens da estrutura metálica?</strong></h2>
+ <!-- /wp:heading -->
+@@ -482,4 +482,4 @@
+ 
+-<!-- wp:heading {"level":1} -->
+-<h1 class="wp-block-heading"><strong>Quais são as vantagens da estrutura de concreto?</strong></h1>
++<!-- wp:heading -->
++<h2 class="wp-block-heading"><strong>Quais são as vantagens da estrutura de concreto?</strong></h2>
+ <!-- /wp:heading -->
+@@ -568,4 +568,4 @@
+ 
+-<!-- wp:heading {"level":1} -->
+-<h1 class="wp-block-heading"><strong>Quais são as desvantagens da estrutura de concreto?</strong></h1>
++<!-- wp:heading -->
++<h2 class="wp-block-heading"><strong>Quais são as desvantagens da estrutura de concreto?</strong></h2>
+ <!-- /wp:heading -->
+@@ -646,4 +646,4 @@
+ 
+-<!-- wp:heading {"level":1} -->
+-<h1 class="wp-block-heading"><strong>Estrutura metálica ou concreto: qual é mais barato?</strong></h1>
++<!-- wp:heading -->
++<h2 class="wp-block-heading"><strong>Estrutura metálica ou concreto: qual é mais barato?</strong></h2>
+ <!-- /wp:heading -->
+@@ -756,4 +756,4 @@
+ 
+-<!-- wp:heading {"level":1} -->
+-<h1 class="wp-block-heading"><strong>Estrutura metálica ou concreto: qual é mais rápida?</strong></h1>
++<!-- wp:heading -->
++<h2 class="wp-block-heading"><strong>Estrutura metálica ou concreto: qual é mais rápida?</strong></h2>
+ <!-- /wp:heading -->
+@@ -822,4 +822,4 @@
+ 
+-<!-- wp:heading {"level":1} -->
+-<h1 class="wp-block-heading"><strong>Estrutura metálica ou concreto para galpão: qual escolher?</strong></h1>
++<!-- wp:heading -->
++<h2 class="wp-block-heading"><strong>Estrutura metálica ou concreto para galpão: qual escolher?</strong></h2>
+ <!-- /wp:heading -->
+@@ -896,4 +896,4 @@
+ 
+-<!-- wp:heading {"level":1} -->
+-<h1 class="wp-block-heading"><strong>Estrutura metálica ou concreto para mezanino?</strong></h1>
++<!-- wp:heading -->
++<h2 class="wp-block-heading"><strong>Estrutura metálica ou concreto para mezanino?</strong></h2>
+ <!-- /wp:heading -->
+@@ -942,4 +942,4 @@
+ 
+-<!-- wp:heading {"level":1} -->
+-<h1 class="wp-block-heading"><strong>Estrutura metálica ou concreto para grandes vãos?</strong></h1>
++<!-- wp:heading -->
++<h2 class="wp-block-heading"><strong>Estrutura metálica ou concreto para grandes vãos?</strong></h2>
+ <!-- /wp:heading -->
+@@ -988,4 +988,4 @@
+ 
+-<!-- wp:heading {"level":1} -->
+-<h1 class="wp-block-heading"><strong>Qual estrutura exige mais manutenção?</strong></h1>
++<!-- wp:heading -->
++<h2 class="wp-block-heading"><strong>Qual estrutura exige mais manutenção?</strong></h2>
+ <!-- /wp:heading -->
+@@ -1080,4 +1080,4 @@
+ 
+-<!-- wp:heading {"level":1} -->
+-<h1 class="wp-block-heading"><strong>Qual estrutura dura mais: aço ou concreto?</strong></h1>
++<!-- wp:heading -->
++<h2 class="wp-block-heading"><strong>Qual estrutura dura mais: aço ou concreto?</strong></h2>
+ <!-- /wp:heading -->
+@@ -1142,4 +1142,4 @@
+ 
+-<!-- wp:heading {"level":1} -->
+-<h1 class="wp-block-heading"><strong>Estrutura metálica é segura?</strong></h1>
++<!-- wp:heading -->
++<h2 class="wp-block-heading"><strong>Estrutura metálica é segura?</strong></h2>
+ <!-- /wp:heading -->
+@@ -1170,4 +1170,4 @@
+ 
+-<!-- wp:heading {"level":1} -->
+-<h1 class="wp-block-heading"><strong>É possível utilizar aço e concreto na mesma construção?</strong></h1>
++<!-- wp:heading -->
++<h2 class="wp-block-heading"><strong>É possível utilizar aço e concreto na mesma construção?</strong></h2>
+ <!-- /wp:heading -->
+@@ -1228,4 +1228,4 @@
+ 
+-<!-- wp:heading {"level":1} -->
+-<h1 class="wp-block-heading"><strong>Como escolher entre estrutura metálica e concreto?</strong></h1>
++<!-- wp:heading -->
++<h2 class="wp-block-heading"><strong>Como escolher entre estrutura metálica e concreto?</strong></h2>
+ <!-- /wp:heading -->
+@@ -1303,3 +1303,3 @@
+ <!-- wp:paragraph -->
+-<p>Não compare apenas preço por m².</p>
++<p>Não compare apenas <a href="https://cromengenharia.com/estrutura-metalica-preco-m2/">preço por m²</a>.</p>
+ <!-- /wp:paragraph -->
+@@ -1334,4 +1334,4 @@
+ 
+-<!-- wp:heading {"level":1} -->
+-<h1 class="wp-block-heading"><strong>Comparativo: estrutura metálica x concreto</strong></h1>
++<!-- wp:heading -->
++<h2 class="wp-block-heading"><strong>Comparativo: estrutura metálica x concreto</strong></h2>
+ <!-- /wp:heading -->
+@@ -1350,4 +1350,4 @@
+ 
+-<!-- wp:heading {"level":1} -->
+-<h1 class="wp-block-heading"><strong>Perguntas frequentes sobre estrutura metálica ou concreto</strong></h1>
++<!-- wp:heading -->
++<h2 class="wp-block-heading"><strong>Perguntas frequentes sobre estrutura metálica ou concreto</strong></h2>
+ <!-- /wp:heading -->
+@@ -1430,4 +1430,4 @@
+ 
+-<!-- wp:heading {"level":1} -->
+-<h1 class="wp-block-heading"><strong>Estrutura metálica ou concreto: afinal, qual escolher?</strong></h1>
++<!-- wp:heading -->
++<h2 class="wp-block-heading"><strong>Estrutura metálica ou concreto: afinal, qual escolher?</strong></h2>
+ <!-- /wp:heading -->
+@@ -1470,4 +1470,21 @@
+ 
+-<!-- wp:paragraph -->
+-<p></p>
+-<!-- /wp:paragraph -->
++<!-- wp:heading -->
++<h2 class="wp-block-heading">Leia também</h2>
++<!-- /wp:heading -->
++
++<!-- wp:list -->
++<ul class="wp-block-list"><!-- wp:list-item -->
++<li><a href="https://cromengenharia.com/projeto-de-estrutura-metalica/">Projeto de estrutura metálica: como funciona? Entenda todas as etapas</a></li>
++<!-- /wp:list-item -->
++<!-- wp:list-item -->
++<li><a href="https://cromengenharia.com/galpao-metalico-vantagens-tipos/">Galpão metálico: vantagens, tipos e quando vale a pena</a></li>
++<!-- /wp:list-item -->
++<!-- wp:list-item -->
++<li><a href="https://cromengenharia.com/quanto-custa-galpao-estrutura-metalica/">Quanto custa construir um galpão de estrutura metálica?</a></li>
++<!-- /wp:list-item -->
++</ul>
++<!-- /wp:list -->
++
++<!-- wp:paragraph -->
++<p>A <strong>CROM Engenharia</strong> atua com projeto, fabricação e montagem de estruturas metálicas, atendendo empresas no RN e em todo o Brasil. <a href="https://cromengenharia.com/servicos/">Conheça nossos serviços</a> ou <a href="https://cromengenharia.com/contato/">fale com um engenheiro</a> e solicite um orçamento.</p>
++<!-- /wp:paragraph -->

@@ -1,0 +1,39 @@
+--- antes
++++ depois
+@@ -1029,3 +1029,3 @@
+ <!-- wp:paragraph -->
+-<p>Antes da fabricação, é necessário desenvolver o projeto estrutural.</p>
++<p>Antes da fabricação, é necessário desenvolver o <a href="https://cromengenharia.com/projeto-de-estrutura-metalica/">projeto estrutural</a>.</p>
+ <!-- /wp:paragraph -->
+@@ -1360,4 +1360,4 @@
+ 
+-<!-- wp:heading {"level":1} -->
+-<h1 class="wp-block-heading"><strong>Galpão metálico é seguro?</strong></h1>
++<!-- wp:heading -->
++<h2 class="wp-block-heading"><strong>Galpão metálico é seguro?</strong></h2>
+ <!-- /wp:heading -->
+@@ -1700,4 +1700,21 @@
+ 
+-<!-- wp:paragraph -->
+-<p></p>
+-<!-- /wp:paragraph -->
++<!-- wp:heading -->
++<h2 class="wp-block-heading">Leia também</h2>
++<!-- /wp:heading -->
++
++<!-- wp:list -->
++<ul class="wp-block-list"><!-- wp:list-item -->
++<li><a href="https://cromengenharia.com/quanto-custa-galpao-estrutura-metalica/">Quanto custa construir um galpão de estrutura metálica?</a></li>
++<!-- /wp:list-item -->
++<!-- wp:list-item -->
++<li><a href="https://cromengenharia.com/estrutura-metalica-ou-concreto/">Estrutura metálica ou concreto: qual escolher para sua obra?</a></li>
++<!-- /wp:list-item -->
++<!-- wp:list-item -->
++<li><a href="https://cromengenharia.com/estrutura-metalica-preco-m2/">Estrutura metálica: preço por m², como calcular e o que influencia o valor</a></li>
++<!-- /wp:list-item -->
++</ul>
++<!-- /wp:list -->
++
++<!-- wp:paragraph -->
++<p>A <strong>CROM Engenharia</strong> atua com projeto, fabricação e montagem de estruturas metálicas, atendendo empresas no RN e em todo o Brasil. <a href="https://cromengenharia.com/servicos/">Conheça nossos serviços</a> ou <a href="https://cromengenharia.com/contato/">fale com um engenheiro</a> e solicite um orçamento.</p>
++<!-- /wp:paragraph -->

@@ -1,0 +1,54 @@
+--- antes
++++ depois
+@@ -159,3 +159,3 @@
+ <!-- wp:paragraph -->
+-<p>O <strong>container almoxarifado</strong> é utilizado para armazenar ferramentas, materiais, peças, equipamentos e outros itens necessários à execução da obra.</p>
++<p>O <strong><a href="https://cromengenharia.com/container-almoxarifado-para-obra/">container almoxarifado</a></strong> é utilizado para armazenar ferramentas, materiais, peças, equipamentos e outros itens necessários à execução da obra.</p>
+ <!-- /wp:paragraph -->
+@@ -255,3 +255,3 @@
+ <!-- wp:paragraph -->
+-<p>O <strong>container escritório</strong> cria um ambiente destinado à administração, engenharia e gestão do empreendimento.</p>
++<p>O <strong><a href="https://cromengenharia.com/container-escritorio-para-obra/">container escritório</a></strong> cria um ambiente destinado à administração, engenharia e gestão do empreendimento.</p>
+ <!-- /wp:paragraph -->
+@@ -507,3 +507,3 @@
+ <!-- wp:paragraph -->
+-<p>Além da base do container, é necessário considerar como ocorrerão as conexões às redes ou aos sistemas provisórios de água e esgoto.</p>
++<p>Além da <a href="https://cromengenharia.com/base-para-container-fundacao/">base do container</a>, é necessário considerar como ocorrerão as conexões às redes ou aos sistemas provisórios de água e esgoto.</p>
+ <!-- /wp:paragraph -->
+@@ -1286,4 +1286,4 @@
+ 
+-<!-- wp:heading {"level":1} -->
+-<h1 class="wp-block-heading"><strong>Perguntas frequentes sobre container para canteiro de obras</strong></h1>
++<!-- wp:heading -->
++<h2 class="wp-block-heading"><strong>Perguntas frequentes sobre container para canteiro de obras</strong></h2>
+ <!-- /wp:heading -->
+@@ -1354,4 +1354,4 @@
+ 
+-<!-- wp:heading {"level":1} -->
+-<h1 class="wp-block-heading"><strong>Container para canteiro de obras: escolha o modelo de acordo com a necessidade</strong></h1>
++<!-- wp:heading -->
++<h2 class="wp-block-heading"><strong>Container para canteiro de obras: escolha o modelo de acordo com a necessidade</strong></h2>
+ <!-- /wp:heading -->
+@@ -1385 +1385,22 @@
+ <!-- /wp:paragraph -->
++
++<!-- wp:heading -->
++<h2 class="wp-block-heading">Leia também</h2>
++<!-- /wp:heading -->
++
++<!-- wp:list -->
++<ul class="wp-block-list"><!-- wp:list-item -->
++<li><a href="https://cromengenharia.com/container-com-porta-e-janela/">Container com porta e janela: quais cuidados tomar ao modificar a estrutura?</a></li>
++<!-- /wp:list-item -->
++<!-- wp:list-item -->
++<li><a href="https://cromengenharia.com/corte-container-maritimo-reforco-estrutural/">Pode cortar container marítimo? Veja quando é necessário reforço estrutural</a></li>
++<!-- /wp:list-item -->
++<!-- wp:list-item -->
++<li><a href="https://cromengenharia.com/container-para-guardar-ferramentas/">Container para guardar ferramentas e materiais na obra: qual escolher?</a></li>
++<!-- /wp:list-item -->
++</ul>
++<!-- /wp:list -->
++
++<!-- wp:paragraph -->
++<p>A <strong>CROM Engenharia</strong> atua com soluções em containers metálicos, atendendo empresas no RN e em todo o Brasil. <a href="https://cromengenharia.com/servicos/">Conheça nossos serviços</a> ou <a href="https://cromengenharia.com/contato/">fale com um engenheiro</a> e solicite um orçamento.</p>
++<!-- /wp:paragraph -->

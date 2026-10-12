@@ -1,0 +1,35 @@
+--- antes
++++ depois
+@@ -111,3 +111,3 @@
+ <!-- wp:paragraph -->
+-<p>Por esse motivo, o <strong>preço da estrutura metálica por m² deve ser utilizado principalmente como estimativa inicial</strong>, enquanto o orçamento definitivo deve considerar o projeto e as condições reais da obra.</p>
++<p>Por esse motivo, o <strong><a href="https://cromengenharia.com/estrutura-metalica-preco-m2/">preço da estrutura metálica</a> por m² deve ser utilizado principalmente como estimativa inicial</strong>, enquanto o orçamento definitivo deve considerar o projeto e as condições reais da obra.</p>
+ <!-- /wp:paragraph -->
+@@ -213,3 +213,3 @@
+ <!-- wp:paragraph -->
+-<p>Por essa razão, um bom projeto estrutural deve buscar não somente segurança, mas também <strong>eficiência na fabricação e montagem</strong>.</p>
++<p>Por essa razão, um bom <a href="https://cromengenharia.com/projeto-de-estrutura-metalica/">projeto estrutural</a> deve buscar não somente segurança, mas também <strong>eficiência na fabricação e montagem</strong>.</p>
+ <!-- /wp:paragraph -->
+@@ -931 +931,22 @@
+ <!-- /wp:paragraph -->
++
++<!-- wp:heading -->
++<h2 class="wp-block-heading">Leia também</h2>
++<!-- /wp:heading -->
++
++<!-- wp:list -->
++<ul class="wp-block-list"><!-- wp:list-item -->
++<li><a href="https://cromengenharia.com/galpao-metalico-vantagens-tipos/">Galpão metálico: vantagens, tipos e quando vale a pena</a></li>
++<!-- /wp:list-item -->
++<!-- wp:list-item -->
++<li><a href="https://cromengenharia.com/quanto-custa-galpao-estrutura-metalica/">Quanto custa construir um galpão de estrutura metálica?</a></li>
++<!-- /wp:list-item -->
++<!-- wp:list-item -->
++<li><a href="https://cromengenharia.com/estrutura-metalica-ou-concreto/">Estrutura metálica ou concreto: qual escolher para sua obra?</a></li>
++<!-- /wp:list-item -->
++</ul>
++<!-- /wp:list -->
++
++<!-- wp:paragraph -->
++<p>A <strong>CROM Engenharia</strong> atua com projeto, fabricação e montagem de estruturas metálicas, atendendo empresas no RN e em todo o Brasil. <a href="https://cromengenharia.com/servicos/">Conheça nossos serviços</a> ou <a href="https://cromengenharia.com/contato/">fale com um engenheiro</a> e solicite um orçamento.</p>
++<!-- /wp:paragraph -->

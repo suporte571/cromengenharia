@@ -1,0 +1,43 @@
+--- antes
++++ depois
+@@ -1,7 +1,7 @@
+ <!-- wp:paragraph -->
+-<p>O <strong>container escritório para obra</strong> é uma solução modular utilizada para criar uma área administrativa, técnica ou operacional dentro do canteiro de obras. Ele pode servir como espaço de trabalho para engenheiros, arquitetos, técnicos, gestores, encarregados e equipes responsáveis pelo acompanhamento do empreendimento.</p>
+-<!-- /wp:paragraph -->
+-
+-<!-- wp:paragraph -->
+-<p>Diferentemente de um container destinado apenas ao armazenamento, um <strong>container escritório</strong> precisa ser pensado para a permanência de pessoas. Isso muda significativamente os critérios de escolha: além da estrutura metálica, é necessário considerar <strong>dimensões, layout interno, portas e janelas, ventilação, conforto térmico, iluminação, instalações elétricas, climatização, piso, segurança e condições de instalação</strong>.</p>
++<p>O <strong>container escritório para obra</strong> é uma solução modular utilizada para criar uma área administrativa, técnica ou operacional dentro do <a href="https://cromengenharia.com/container-para-canteiro-de-obras/">canteiro de obras</a>. Ele pode servir como espaço de trabalho para engenheiros, arquitetos, técnicos, gestores, encarregados e equipes responsáveis pelo acompanhamento do empreendimento.</p>
++<!-- /wp:paragraph -->
++
++<!-- wp:paragraph -->
++<p>Diferentemente de um container destinado apenas ao armazenamento, um <strong>container escritório</strong> precisa ser pensado para a permanência de pessoas. Isso muda significativamente os critérios de escolha: além da estrutura metálica, é necessário considerar <strong>dimensões, layout interno, <a href="https://cromengenharia.com/container-com-porta-e-janela/">portas e janelas</a>, ventilação, conforto térmico, iluminação, instalações elétricas, climatização, piso, segurança e condições de instalação</strong>.</p>
+ <!-- /wp:paragraph -->
+@@ -525,3 +525,3 @@
+ <!-- wp:paragraph -->
+-<p>Um escritório de obra normalmente exige uma infraestrutura elétrica mais completa do que um container almoxarifado.</p>
++<p>Um escritório de obra normalmente exige uma infraestrutura elétrica mais completa do que um <a href="https://cromengenharia.com/container-almoxarifado-para-obra/">container almoxarifado</a>.</p>
+ <!-- /wp:paragraph -->
+@@ -1485 +1485,22 @@
+ <!-- /wp:paragraph -->
++
++<!-- wp:heading -->
++<h2 class="wp-block-heading">Leia também</h2>
++<!-- /wp:heading -->
++
++<!-- wp:list -->
++<ul class="wp-block-list"><!-- wp:list-item -->
++<li><a href="https://cromengenharia.com/base-para-container-fundacao/">Base para container: precisa de fundação para instalar?</a></li>
++<!-- /wp:list-item -->
++<!-- wp:list-item -->
++<li><a href="https://cromengenharia.com/corte-container-maritimo-reforco-estrutural/">Pode cortar container marítimo? Veja quando é necessário reforço estrutural</a></li>
++<!-- /wp:list-item -->
++<!-- wp:list-item -->
++<li><a href="https://cromengenharia.com/container-para-guardar-ferramentas/">Container para guardar ferramentas e materiais na obra: qual escolher?</a></li>
++<!-- /wp:list-item -->
++</ul>
++<!-- /wp:list -->
++
++<!-- wp:paragraph -->
++<p>A <strong>CROM Engenharia</strong> atua com soluções em containers metálicos, atendendo empresas no RN e em todo o Brasil. <a href="https://cromengenharia.com/servicos/">Conheça nossos serviços</a> ou <a href="https://cromengenharia.com/contato/">fale com um engenheiro</a> e solicite um orçamento.</p>
++<!-- /wp:paragraph -->

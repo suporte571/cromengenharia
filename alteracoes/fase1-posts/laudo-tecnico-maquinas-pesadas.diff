@@ -1,0 +1,30 @@
+--- antes
++++ depois
+@@ -29,3 +29,3 @@
+ <!-- wp:paragraph -->
+-<p>Neste conteúdo, você vai entender <strong>o que é um laudo técnico de máquinas pesadas, quando ele pode ser necessário, o que deve ser analisado, sua relação com a NR-12 e a ART e por que avaliações especializadas são importantes para a segurança dos equipamentos</strong>.</p>
++<p>Neste conteúdo, você vai entender <strong>o que é um laudo técnico de máquinas pesadas, quando ele pode ser necessário, o que deve ser analisado, sua relação com a <a href="https://cromengenharia.com/nr-12-para-maquinas/">NR-12</a> e a ART e por que avaliações especializadas são importantes para a segurança dos equipamentos</strong>.</p>
+ <!-- /wp:paragraph -->
+@@ -1345 +1345,22 @@
+ <!-- /wp:paragraph -->
++
++<!-- wp:heading -->
++<h2 class="wp-block-heading">Leia também</h2>
++<!-- /wp:heading -->
++
++<!-- wp:list -->
++<ul class="wp-block-list"><!-- wp:list-item -->
++<li><a href="https://cromengenharia.com/linha-de-vida-nr-35/">Linha de vida NR-35: o que é e quando é obrigatória?</a></li>
++<!-- /wp:list-item -->
++<!-- wp:list-item -->
++<li><a href="https://cromengenharia.com/projeto-de-estrutura-metalica/">Projeto de estrutura metálica: como funciona? Entenda todas as etapas</a></li>
++<!-- /wp:list-item -->
++<!-- wp:list-item -->
++<li><a href="https://cromengenharia.com/nr-12-para-maquinas/">NR-12 para máquinas: quando é obrigatório e o que sua empresa precisa fazer?</a></li>
++<!-- /wp:list-item -->
++</ul>
++<!-- /wp:list -->
++
++<!-- wp:paragraph -->
++<p>A <strong>CROM Engenharia</strong> atua com laudos técnicos de máquinas pesadas, atendendo empresas no RN e em todo o Brasil. <a href="https://cromengenharia.com/servicos/">Conheça nossos serviços</a> ou <a href="https://cromengenharia.com/contato/">fale com um engenheiro</a> e solicite um orçamento.</p>
++<!-- /wp:paragraph -->

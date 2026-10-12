@@ -1,0 +1,30 @@
+--- antes
++++ depois
+@@ -1,3 +1,3 @@
+ <!-- wp:paragraph -->
+-<p>Saber <strong>quanto custa instalar uma linha de vida</strong> é uma dúvida comum para empresas que possuem trabalhadores realizando atividades em telhados, coberturas, estruturas metálicas, áreas industriais e outros locais com risco de queda.</p>
++<p>Saber <strong>quanto custa instalar uma <a href="https://cromengenharia.com/linha-de-vida-nr-35/">linha de vida</a></strong> é uma dúvida comum para empresas que possuem trabalhadores realizando atividades em telhados, coberturas, estruturas metálicas, áreas industriais e outros locais com risco de queda.</p>
+ <!-- /wp:paragraph -->
+@@ -1179 +1179,22 @@
+ <!-- /wp:paragraph -->
++
++<!-- wp:heading -->
++<h2 class="wp-block-heading">Leia também</h2>
++<!-- /wp:heading -->
++
++<!-- wp:list -->
++<ul class="wp-block-list"><!-- wp:list-item -->
++<li><a href="https://cromengenharia.com/projeto-de-estrutura-metalica/">Projeto de estrutura metálica: como funciona? Entenda todas as etapas</a></li>
++<!-- /wp:list-item -->
++<!-- wp:list-item -->
++<li><a href="https://cromengenharia.com/galpao-metalico-vantagens-tipos/">Galpão metálico: vantagens, tipos e quando vale a pena</a></li>
++<!-- /wp:list-item -->
++<!-- wp:list-item -->
++<li><a href="https://cromengenharia.com/linha-de-vida-nr-35/">Linha de vida NR-35: o que é e quando é obrigatória?</a></li>
++<!-- /wp:list-item -->
++</ul>
++<!-- /wp:list -->
++
++<!-- wp:paragraph -->
++<p>A <strong>CROM Engenharia</strong> atua com projeto e instalação de linha de vida e sistemas de ancoragem, atendendo empresas no RN e em todo o Brasil. <a href="https://cromengenharia.com/servicos/">Conheça nossos serviços</a> ou <a href="https://cromengenharia.com/contato/">fale com um engenheiro</a> e solicite um orçamento.</p>
++<!-- /wp:paragraph -->

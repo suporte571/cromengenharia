@@ -1,0 +1,45 @@
+--- antes
++++ depois
+@@ -5,7 +5,7 @@
+ <!-- wp:paragraph -->
+-<p>Entretanto, não existe um preço único que possa ser aplicado a todos os galpões metálicos.</p>
+-<!-- /wp:paragraph -->
+-
+-<!-- wp:paragraph -->
+-<p>O valor depende da área construída, altura, tamanho dos vãos, quantidade de aço, finalidade da edificação, tipo de cobertura, características do terreno, projeto estrutural, fundações, fabricação, transporte e montagem.</p>
++<p>Entretanto, não existe um preço único que possa ser aplicado a todos os <a href="https://cromengenharia.com/galpao-metalico-vantagens-tipos/">galpões metálicos</a>.</p>
++<!-- /wp:paragraph -->
++
++<!-- wp:paragraph -->
++<p>O valor depende da área construída, altura, tamanho dos vãos, quantidade de aço, finalidade da edificação, tipo de cobertura, características do terreno, <a href="https://cromengenharia.com/projeto-de-estrutura-metalica/">projeto estrutural</a>, fundações, fabricação, transporte e montagem.</p>
+ <!-- /wp:paragraph -->
+@@ -119,3 +119,3 @@
+ <!-- wp:paragraph -->
+-<p><strong>Preço por m² = custo considerado ÷ área construída</strong></p>
++<p><strong><a href="https://cromengenharia.com/estrutura-metalica-preco-m2/">Preço por m²</a> = custo considerado ÷ área construída</strong></p>
+ <!-- /wp:paragraph -->
+@@ -1080,4 +1080,21 @@
+ 
+-<!-- wp:paragraph -->
+-<p></p>
+-<!-- /wp:paragraph -->
++<!-- wp:heading -->
++<h2 class="wp-block-heading">Leia também</h2>
++<!-- /wp:heading -->
++
++<!-- wp:list -->
++<ul class="wp-block-list"><!-- wp:list-item -->
++<li><a href="https://cromengenharia.com/estrutura-metalica-ou-concreto/">Estrutura metálica ou concreto: qual escolher para sua obra?</a></li>
++<!-- /wp:list-item -->
++<!-- wp:list-item -->
++<li><a href="https://cromengenharia.com/quanto-custa-estrutura-metalica/">Quanto custa uma estrutura metálica? Veja preços, fatores e como calcular</a></li>
++<!-- /wp:list-item -->
++<!-- wp:list-item -->
++<li><a href="https://cromengenharia.com/projeto-de-estrutura-metalica/">Projeto de estrutura metálica: como funciona? Entenda todas as etapas</a></li>
++<!-- /wp:list-item -->
++</ul>
++<!-- /wp:list -->
++
++<!-- wp:paragraph -->
++<p>A <strong>CROM Engenharia</strong> atua com projeto, fabricação e montagem de estruturas metálicas, atendendo empresas no RN e em todo o Brasil. <a href="https://cromengenharia.com/servicos/">Conheça nossos serviços</a> ou <a href="https://cromengenharia.com/contato/">fale com um engenheiro</a> e solicite um orçamento.</p>
++<!-- /wp:paragraph -->

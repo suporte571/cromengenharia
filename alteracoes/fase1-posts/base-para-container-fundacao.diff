@@ -1,0 +1,52 @@
+--- antes
++++ depois
+@@ -9,3 +9,3 @@
+ <!-- wp:paragraph -->
+-<p>Colocar o módulo diretamente sobre um terreno irregular ou utilizar apoios improvisados pode provocar desnivelamentos, deformações, problemas em portas e janelas, acúmulo de água e até comprometer o desempenho da estrutura ao longo do tempo.</p>
++<p>Colocar o módulo diretamente sobre um terreno irregular ou utilizar apoios improvisados pode provocar desnivelamentos, deformações, problemas em <a href="https://cromengenharia.com/container-com-porta-e-janela/">portas e janelas</a>, acúmulo de água e até comprometer o desempenho da estrutura ao longo do tempo.</p>
+ <!-- /wp:paragraph -->
+@@ -153,3 +153,3 @@
+ <!-- wp:paragraph -->
+-<p>Já um container escritório pode incluir:</p>
++<p>Já um <a href="https://cromengenharia.com/container-escritorio-para-obra/">container escritório</a> pode incluir:</p>
+ <!-- /wp:paragraph -->
+@@ -515,3 +515,3 @@
+ <!-- wp:paragraph -->
+-<p>Para conhecer melhor esse formato, vale consultar o conteúdo <strong>“Container 6x2,40: medidas, capacidade e principais aplicações”</strong>.</p>
++<p>Para conhecer melhor esse formato, leia <a href="https://cromengenharia.com/container-6x240-medidas-capacidade/">Container 6x2,40: medidas, capacidade e principais aplicações</a>.</p>
+ <!-- /wp:paragraph -->
+@@ -935,3 +935,3 @@
+ <!-- wp:paragraph -->
+-<p>Para aprofundar esse assunto, consulte <strong>“Pode cortar container marítimo? Veja quando é necessário reforço estrutural”</strong>.</p>
++<p>Para aprofundar esse assunto, consulte <strong>“Pode cortar container marítimo? Veja quando é necessário <a href="https://cromengenharia.com/corte-container-maritimo-reforco-estrutural/">reforço estrutural</a>”</strong>.</p>
+ <!-- /wp:paragraph -->
+@@ -1079,3 +1079,3 @@
+ <!-- wp:paragraph -->
+-<p>Para aprofundar esse tipo de aplicação, veja <strong>“Container almoxarifado para obra: medidas, estrutura e como escolher”</strong>.</p>
++<p>Para aprofundar esse tipo de aplicação, veja <strong>“<a href="https://cromengenharia.com/container-almoxarifado-para-obra/">Container almoxarifado</a> para obra: medidas, estrutura e como escolher”</strong>.</p>
+ <!-- /wp:paragraph -->
+@@ -1470,4 +1470,21 @@
+ 
+-<!-- wp:paragraph -->
+-<p></p>
+-<!-- /wp:paragraph -->
++<!-- wp:heading -->
++<h2 class="wp-block-heading">Leia também</h2>
++<!-- /wp:heading -->
++
++<!-- wp:list -->
++<ul class="wp-block-list"><!-- wp:list-item -->
++<li><a href="https://cromengenharia.com/container-para-guardar-ferramentas/">Container para guardar ferramentas e materiais na obra: qual escolher?</a></li>
++<!-- /wp:list-item -->
++<!-- wp:list-item -->
++<li><a href="https://cromengenharia.com/container-6x240-medidas-capacidade/">Container 6x2,40: medidas, capacidade e principais aplicações</a></li>
++<!-- /wp:list-item -->
++<!-- wp:list-item -->
++<li><a href="https://cromengenharia.com/container-para-canteiro-de-obras/">Container para canteiro de obras: quais modelos podem ser utilizados?</a></li>
++<!-- /wp:list-item -->
++</ul>
++<!-- /wp:list -->
++
++<!-- wp:paragraph -->
++<p>A <strong>CROM Engenharia</strong> atua com soluções em containers metálicos, atendendo empresas no RN e em todo o Brasil. <a href="https://cromengenharia.com/servicos/">Conheça nossos serviços</a> ou <a href="https://cromengenharia.com/contato/">fale com um engenheiro</a> e solicite um orçamento.</p>
++<!-- /wp:paragraph -->

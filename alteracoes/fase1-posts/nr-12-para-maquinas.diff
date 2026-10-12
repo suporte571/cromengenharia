@@ -1,0 +1,32 @@
+--- antes
++++ depois
+@@ -793,3 +793,3 @@
+ <!-- wp:paragraph -->
+-<p>Um <strong>laudo técnico ou relatório de adequação de máquinas</strong> pode ser importante para registrar avaliações, constatações e recomendações, mas seu escopo deve ser claramente definido.</p>
++<p>Um <strong><a href="https://cromengenharia.com/laudo-tecnico-maquinas-pesadas/">laudo técnico</a> ou relatório de adequação de máquinas</strong> pode ser importante para registrar avaliações, constatações e recomendações, mas seu escopo deve ser claramente definido.</p>
+ <!-- /wp:paragraph -->
+@@ -1366,4 +1366,21 @@
+ 
+-<!-- wp:paragraph -->
+-<p></p>
+-<!-- /wp:paragraph -->
++<!-- wp:heading -->
++<h2 class="wp-block-heading">Leia também</h2>
++<!-- /wp:heading -->
++
++<!-- wp:list -->
++<ul class="wp-block-list"><!-- wp:list-item -->
++<li><a href="https://cromengenharia.com/linha-de-vida-nr-35/">Linha de vida NR-35: o que é e quando é obrigatória?</a></li>
++<!-- /wp:list-item -->
++<!-- wp:list-item -->
++<li><a href="https://cromengenharia.com/projeto-de-estrutura-metalica/">Projeto de estrutura metálica: como funciona? Entenda todas as etapas</a></li>
++<!-- /wp:list-item -->
++<!-- wp:list-item -->
++<li><a href="https://cromengenharia.com/laudo-tecnico-maquinas-pesadas/">Laudo técnico de máquinas pesadas: quando é necessário?</a></li>
++<!-- /wp:list-item -->
++</ul>
++<!-- /wp:list -->
++
++<!-- wp:paragraph -->
++<p>A <strong>CROM Engenharia</strong> atua com laudos técnicos de máquinas pesadas, atendendo empresas no RN e em todo o Brasil. <a href="https://cromengenharia.com/servicos/">Conheça nossos serviços</a> ou <a href="https://cromengenharia.com/contato/">fale com um engenheiro</a> e solicite um orçamento.</p>
++<!-- /wp:paragraph -->

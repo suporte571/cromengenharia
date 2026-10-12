@@ -1,0 +1,60 @@
+--- antes
++++ depois
+@@ -1,3 +1,3 @@
+ <!-- wp:paragraph -->
+-<p>Transformar um container em escritório, almoxarifado, sala técnica, espaço de apoio ou módulo para canteiro de obras quase sempre exige adaptações. Entre as mais comuns estão a instalação de <strong>portas e janelas</strong>, necessárias para melhorar o acesso, a iluminação natural, a ventilação e a funcionalidade do ambiente.</p>
++<p>Transformar um container em escritório, almoxarifado, sala técnica, espaço de apoio ou módulo para <a href="https://cromengenharia.com/container-para-canteiro-de-obras/">canteiro de obras</a> quase sempre exige adaptações. Entre as mais comuns estão a instalação de <strong>portas e janelas</strong>, necessárias para melhorar o acesso, a iluminação natural, a ventilação e a funcionalidade do ambiente.</p>
+ <!-- /wp:paragraph -->
+@@ -173,3 +173,3 @@
+ <!-- wp:paragraph -->
+-<p>Nem toda abertura significa automaticamente que será necessário instalar um grande reforço estrutural.</p>
++<p>Nem toda abertura significa automaticamente que será necessário instalar um grande <a href="https://cromengenharia.com/corte-container-maritimo-reforco-estrutural/">reforço estrutural</a>.</p>
+ <!-- /wp:paragraph -->
+@@ -240,3 +240,3 @@
+ <blockquote class="wp-block-quote"><!-- wp:paragraph -->
+-<p><strong>Link interno recomendado:</strong> no trecho sobre reforços, inserir o conteúdo <strong>“Pode cortar container marítimo? Veja quando é necessário reforço estrutural”</strong>.</p>
++<p>Para entender melhor quando o reforço é necessário, leia <a href="https://cromengenharia.com/corte-container-maritimo-reforco-estrutural/">Pode cortar container marítimo? Veja quando é necessário reforço estrutural</a>.</p>
+ <!-- /wp:paragraph --></blockquote>
+@@ -814,3 +814,3 @@
+ <blockquote class="wp-block-quote"><!-- wp:paragraph -->
+-<p>Para aprofundar o assunto em aplicações administrativas, pode ser inserido um link para <strong>“Container escritório para obra: medidas, estrutura e o que precisa ter”</strong>.</p>
++<p>Para aprofundar o assunto em aplicações administrativas, leia <a href="https://cromengenharia.com/container-escritorio-para-obra/">Container escritório para obra: medidas, estrutura e o que precisa ter</a>.</p>
+ <!-- /wp:paragraph --></blockquote>
+@@ -935,3 +935,3 @@
+ <!-- wp:paragraph -->
+-<p>Por isso, um <strong>container escritório</strong> deve ser pensado como um ambiente completo.</p>
++<p>Por isso, um <strong><a href="https://cromengenharia.com/container-escritorio-para-obra/">container escritório</a></strong> deve ser pensado como um ambiente completo.</p>
+ <!-- /wp:paragraph -->
+@@ -998,3 +998,3 @@
+ <blockquote class="wp-block-quote"><!-- wp:paragraph -->
+-<p>Vale inserir links internos para <strong>“Container almoxarifado para obra: medidas, estrutura e como escolher”</strong> e <strong>“Container para guardar ferramentas e materiais na obra: qual escolher?”</strong>.</p>
++<p>Veja também: <a href="https://cromengenharia.com/container-almoxarifado-para-obra/">Container almoxarifado para obra: medidas, estrutura e como escolher</a> e <a href="https://cromengenharia.com/container-para-guardar-ferramentas/">Container para guardar ferramentas e materiais na obra: qual escolher?</a></p>
+ <!-- /wp:paragraph --></blockquote>
+@@ -1146,3 +1146,3 @@
+ <blockquote class="wp-block-quote"><!-- wp:paragraph -->
+-<p>Esse trecho permite futuramente um link para <strong>“Base para container: precisa de fundação para instalar?”</strong>.</p>
++<p>Saiba mais em <a href="https://cromengenharia.com/base-para-container-fundacao/">Base para container: precisa de fundação para instalar?</a></p>
+ <!-- /wp:paragraph --></blockquote>
+@@ -1433 +1433,22 @@
+ <!-- /wp:paragraph -->
++
++<!-- wp:heading -->
++<h2 class="wp-block-heading">Leia também</h2>
++<!-- /wp:heading -->
++
++<!-- wp:list -->
++<ul class="wp-block-list"><!-- wp:list-item -->
++<li><a href="https://cromengenharia.com/base-para-container-fundacao/">Base para container: precisa de fundação para instalar?</a></li>
++<!-- /wp:list-item -->
++<!-- wp:list-item -->
++<li><a href="https://cromengenharia.com/container-para-guardar-ferramentas/">Container para guardar ferramentas e materiais na obra: qual escolher?</a></li>
++<!-- /wp:list-item -->
++<!-- wp:list-item -->
++<li><a href="https://cromengenharia.com/container-6x240-medidas-capacidade/">Container 6x2,40: medidas, capacidade e principais aplicações</a></li>
++<!-- /wp:list-item -->
++</ul>
++<!-- /wp:list -->
++
++<!-- wp:paragraph -->
++<p>A <strong>CROM Engenharia</strong> atua com soluções em containers metálicos, atendendo empresas no RN e em todo o Brasil. <a href="https://cromengenharia.com/servicos/">Conheça nossos serviços</a> ou <a href="https://cromengenharia.com/contato/">fale com um engenheiro</a> e solicite um orçamento.</p>
++<!-- /wp:paragraph -->
