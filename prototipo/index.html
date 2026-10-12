@@ -179,6 +179,7 @@ section[data-page].active{display:block}
 .phead{background:var(--ink);color:var(--paper);position:relative;overflow:hidden}
 .phead img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.3}
 .phead .wrap{position:relative;padding-block:clamp(48px,7vw,84px);display:grid;gap:14px}
+.phead .lead{color:#cfd4d9}
 .crumbs{font:400 .8rem var(--mono);color:var(--mute-dark)}
 .crumbs a{color:var(--mute-dark)}
 
@@ -204,7 +205,7 @@ section[data-page].active{display:block}
 .faq details[open] summary::after{content:"–"}
 .faq p{margin-top:10px;color:var(--mute)}
 .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.gallery img{width:100%;aspect-ratio:1;object-fit:cover}
+.gallery img{width:100%;height:100%;aspect-ratio:1;object-fit:cover}
 @media (max-width:520px){.gallery{grid-template-columns:repeat(2,1fr)}}
 
 /* Blog list */
@@ -264,6 +265,12 @@ footer.site .flogo{height:40px;width:auto;margin-bottom:14px}
 .wa{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:30;background:var(--green);color:#fff;text-decoration:none;font:600 .95rem var(--body);padding:14px 18px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.25);display:flex;gap:8px;align-items:center}
 .wa svg{width:20px;height:20px;fill:currentColor}
 .note{font:400 .78rem var(--mono);color:var(--mute)}
+.clients{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;align-items:center}
+.clients img{width:100%;max-height:64px;object-fit:contain;background:var(--paper);padding:14px;border:1px solid var(--line);aspect-ratio:5/2;filter:grayscale(1);opacity:.85;transition:filter .2s,opacity .2s}
+.clients img:hover{filter:none;opacity:1}
+@media (max-width:900px){.clients{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:480px){.clients{grid-template-columns:repeat(2,1fr)}}
+.illus{display:block;width:100%;height:100%}
 </style>
 
 <div class="proto">PROTÓTIPO do novo site · navegue pelo menu · fotos reais do site atual · nomes de obras e depoimentos a confirmar</div>
@@ -315,7 +322,7 @@ footer.site .flogo{height:40px;width:auto;margin-bottom:14px}
   <div class="stripe" aria-hidden="true"></div>
   <div class="nums"><div class="wrap">
     <div><strong>+25</strong><span>anos de experiência</span></div>
-    <div><strong>15</strong><span>profissionais na equipe</span></div>
+    <div><strong>ART</strong><span>em todos os projetos</span></div>
     <div><strong>4</strong><span>linhas de serviço</span></div>
     <div><strong>BR</strong><span>atendimento em todo o Brasil</span></div>
   </div></div>
@@ -362,7 +369,15 @@ footer.site .flogo{height:40px;width:auto;margin-bottom:14px}
       <div class="review"><span class="stars">★★★★★</span><p>Espaço para depoimento real de cliente.</p><p class="note">NOME · EMPRESA · CIDADE</p></div>
       <div class="review"><span class="stars">★★★★★</span><p>Espaço para depoimento real de cliente.</p><p class="note">NOME · EMPRESA · CIDADE</p></div>
     </div>
-    <p class="note" style="margin-top:14px">Logos de clientes e parceiros entram aqui assim que forem enviados.</p>
+    <h3 style="margin:48px 0 20px;font-size:1.1rem;font-family:var(--mono);font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)">Clientes e parceiros</h3>
+    <div class="clients" role="list">
+      <img role="listitem" src="img/cliente-self.png" alt="SELF Engenharia" loading="lazy">
+      <img role="listitem" src="img/cliente-10dez.png" alt="Shopping 10DEZ" loading="lazy">
+      <img role="listitem" src="img/cliente-solar-coca-cola.png" alt="Solar BR Coca-Cola" loading="lazy">
+      <img role="listitem" src="img/cliente-proseng.png" alt="PROSENG Projetos e Serviços de Engenharia" loading="lazy">
+      <img role="listitem" src="img/cliente-chj.png" alt="CHJ Engenharia" loading="lazy">
+      <img role="listitem" src="img/cliente-gaspar.png" alt="Construtora Gaspar" loading="lazy">
+    </div>
   </div></div>
 
   <div class="band band-mist"><div class="wrap">
@@ -384,7 +399,7 @@ footer.site .flogo{height:40px;width:auto;margin-bottom:14px}
       <p class="eyebrow">Nossa empresa</p>
       <h2>CROM Engenharia</h2>
       <p>A CROM Engenharia oferece soluções para as mais diversas necessidades do mercado em <strong>estruturas metálicas e engenharia mecânica</strong>. Contamos com profissionais habilitados para atender, com segurança, projetos complexos e exigentes.</p>
-      <p>São mais de 25 anos de experiência e uma equipe de 15 profissionais treinados. Atendemos empresas nacionais e multinacionais em todo o Brasil, a partir da nossa fábrica na BR-304, em Parnamirim/RN.</p>
+      <p>São mais de 25 anos de experiência. Atendemos empresas nacionais e multinacionais em todo o Brasil, a partir da nossa fábrica na BR-304, em Parnamirim/RN.</p>
       <p class="note">CNPJ 34.629.759/0001-50 · CREA-RN 200005964-2</p>
     </div>
     <img src="img/obra-1259.jpg" alt="Fabricação de treliças metálicas" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover">
@@ -392,7 +407,7 @@ footer.site .flogo{height:40px;width:auto;margin-bottom:14px}
   <div class="stripe" aria-hidden="true"></div>
   <div class="nums"><div class="wrap">
     <div><strong>+25</strong><span>anos de experiência</span></div>
-    <div><strong>15</strong><span>profissionais</span></div>
+    <div><strong>ART</strong><span>em todos os projetos</span></div>
     <div><strong>4</strong><span>linhas de serviço</span></div>
     <div><strong>BR</strong><span>atendimento nacional</span></div>
   </div></div>
@@ -401,6 +416,17 @@ footer.site .flogo{height:40px;width:auto;margin-bottom:14px}
       <div><h3>Missão</h3><p>Proporcionar aos nossos clientes soluções personalizadas, confiáveis e de qualidade superior, atendendo às suas necessidades e superando expectativas.</p></div>
       <div><h3>Visão</h3><p>Ser reconhecida como empresa líder em engenharia mecânica, com ampla gama de serviços e um ambiente de trabalho onde a equipe é valorizada.</p></div>
       <div><h3>Valores</h3><p>Profissionalismo, ética e integridade. Respeito a clientes, parceiros e colaboradores, transparência e busca constante pela excelência.</p></div>
+    </div>
+  </div></div>
+  <div class="band band-mist"><div class="wrap">
+    <div class="head"><p class="eyebrow">Clientes e parceiros</p><h2>Quem confia na CROM</h2></div>
+    <div class="clients" role="list">
+      <img role="listitem" src="img/cliente-self.png" alt="SELF Engenharia" loading="lazy">
+      <img role="listitem" src="img/cliente-10dez.png" alt="Shopping 10DEZ" loading="lazy">
+      <img role="listitem" src="img/cliente-solar-coca-cola.png" alt="Solar BR Coca-Cola" loading="lazy">
+      <img role="listitem" src="img/cliente-proseng.png" alt="PROSENG Projetos e Serviços de Engenharia" loading="lazy">
+      <img role="listitem" src="img/cliente-chj.png" alt="CHJ Engenharia" loading="lazy">
+      <img role="listitem" src="img/cliente-gaspar.png" alt="Construtora Gaspar" loading="lazy">
     </div>
   </div></div>
   <div class="band"><div class="wrap">
@@ -560,13 +586,13 @@ const SVC={
   <h2>Por que estrutura metálica?</h2><p>Obra mais rápida, vãos maiores e canteiro mais limpo, porque boa parte do trabalho acontece na fábrica. Compare em <a href="#post">Estrutura metálica ou concreto: qual escolher</a>.</p>`,
   gallery:['obra-1390','obra-952','obra-1215'],
   faq:[['Quanto custa uma estrutura metálica?','Depende do tipo de estrutura, dos vãos, das cargas, do peso de aço e da montagem. Explicamos o cálculo no artigo “Quanto custa uma estrutura metálica”.'],['Vocês atendem fora do RN?','Sim. A fábrica fica em Parnamirim/RN e atendemos empresas em todo o Brasil.'],['O projeto acompanha ART?','Sim. Os projetos são feitos por engenheiros habilitados, com emissão de ART.']]},
- 'containers-metalicos':{tag:'Fabricação sob medida',name:'Containers Metálicos',h1:'Fabricação de containers metálicos',img:null,
+ 'containers-metalicos':{tag:'Fabricação sob medida',name:'Containers Metálicos',h1:'Fabricação de containers metálicos',img:'svg:escritorio',
   lead:'Almoxarifado, escritório de obra, depósito, vestiário e projetos especiais. Também fazemos adaptações e reforços com projeto de engenharia.',
   bullets:['Almoxarifado e depósito','Escritório de obra','Vestiário e apoio','Projetos personalizados'],
   body:`<p>A CROM <strong>fabrica containers metálicos</strong> sob medida para canteiros de obras, indústrias e empresas que precisam de espaços modulares resistentes e prontos para uso.</p>
   <h2>Modelos que fabricamos</h2><ul><li><strong>Container almoxarifado</strong> para materiais e ferramentas</li><li><strong>Container escritório</strong> para obra</li><li><strong>Container depósito</strong></li><li><strong>Container vestiário e de apoio</strong></li><li><strong>Containers personalizados</strong>, com layout, portas, janelas e instalações sob medida</li></ul>
   <h2>Medidas</h2><p>O modelo mais usado tem cerca de <span style="font-family:var(--mono)">6,00 × 2,40 m</span>, mas fabricamos em outros tamanhos conforme a necessidade. Abrir portas e janelas altera a estrutura, por isso toda modificação passa por análise de engenharia.</p>`,
-  gallery:[null,null,null],
+  gallery:['svg:escritorio','svg:almoxarifado','svg:vestiario'],
   faq:[['Vocês fabricam containers sob medida?','Sim. Definimos tamanho, layout, aberturas e instalações de acordo com o uso.'],['Qual container é melhor para canteiro de obras?','Depende da função: almoxarifado, escritório, depósito ou vestiário. Explicamos no artigo sobre containers para canteiro.'],['Vocês entregam fora do RN?','Sim, atendemos empresas em todo o Brasil.']]},
  'linha-de-vida':{tag:'NR-35 · trabalho em altura',name:'Linha de Vida',h1:'Linha de vida e sistemas de ancoragem',img:'obra-1286',
   lead:'Projeto, instalação, inspeção e recertificação de linhas de vida e pontos de ancoragem conforme a NR-35, com ART.',
@@ -614,7 +640,30 @@ const POSTS=[
 
 const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const ph=(img,alt)=>img?`<img src="img/${img}.jpg" alt="${esc(alt)}" loading="lazy">`:`<div class="ph-missing">Foto real do container<br>a enviar</div>`;
+function containerSVG(v){
+  const W=400,H=300,x0=40,x1=360,y0=92,y1=226;
+  let ribs='';for(let x=x0+12;x<x1-8;x+=9)ribs+=`<line x1="${x}" y1="${y0+9}" x2="${x}" y2="${y1-9}" stroke="#d29b16" stroke-width="3"/>`;
+  const door=(x,w=40)=>`<rect x="${x}" y="${y0+30}" width="${w}" height="${y1-y0-39}" fill="#eceff1" stroke="#16191d" stroke-width="3"/><circle cx="${x+w-8}" cy="${y0+82}" r="3" fill="#16191d"/>`;
+  const win=(x,w=64,h=36,y=y0+40)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#9db4c6" stroke="#16191d" stroke-width="3"/><line x1="${x+w/2}" y1="${y}" x2="${x+w/2}" y2="${y+h}" stroke="#16191d" stroke-width="2"/><path d="M${x+6} ${y+h-6} L${x+20} ${y+6}" stroke="#fff" stroke-opacity=".6" stroke-width="3"/>`;
+  const ac=(x)=>`<rect x="${x}" y="${y0+16}" width="34" height="18" fill="#f4f5f6" stroke="#16191d" stroke-width="2"/><line x1="${x+4}" y1="${y0+28}" x2="${x+30}" y2="${y0+28}" stroke="#16191d" stroke-width="1.5"/>`;
+  let feat='';
+  if(v==='escritorio')feat=win(90)+win(180)+ac(195)+door(290);
+  else if(v==='almoxarifado')feat=`<rect x="250" y="${y0+12}" width="104" height="${y1-y0-21}" fill="#e0aa22" stroke="#16191d" stroke-width="3"/><line x1="302" y1="${y0+12}" x2="302" y2="${y1-9}" stroke="#16191d" stroke-width="3"/>${[268,284,320,336].map(x=>`<line x1="${x}" y1="${y0+16}" x2="${x}" y2="${y1-13}" stroke="#16191d" stroke-width="2.5"/>`).join('')}`+door(70)+`<rect x="130" y="${y0+20}" width="90" height="10" fill="#16191d" opacity=".5"/>`;
+  else feat=door(70)+door(160)+win(230,40,18,y0+22)+win(290,40,18,y0+22);
+  return `<svg class="illus" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Ilustração de container metálico ${v}">
+   <defs><linearGradient id="sky${v}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfd8df"/><stop offset="1" stop-color="#eef0ec"/></linearGradient></defs>
+   <rect width="${W}" height="${H}" fill="url(#sky${v})"/>
+   <rect y="238" width="${W}" height="62" fill="#bfb8aa"/><rect y="238" width="${W}" height="4" fill="#a59d8d"/>
+   ${[52,196,330].map(x=>`<rect x="${x}" y="226" width="22" height="14" fill="#8d877b"/>`).join('')}
+   <rect x="${x0}" y="${y0}" width="${x1-x0}" height="${y1-y0}" fill="#f3bf3a"/>
+   ${ribs}
+   <rect x="${x0}" y="${y0}" width="${x1-x0}" height="9" fill="#2a2f35"/><rect x="${x0}" y="${y1-9}" width="${x1-x0}" height="9" fill="#2a2f35"/>
+   <rect x="${x0}" y="${y0}" width="9" height="${y1-y0}" fill="#2a2f35"/><rect x="${x1-9}" y="${y0}" width="9" height="${y1-y0}" fill="#2a2f35"/>
+   ${feat}
+   <text x="${W/2}" y="${H-14}" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#16191d" opacity=".55">ILUSTRAÇÃO · 6,00 × 2,40 m</text>
+  </svg>`;
+}
+const ph=(img,alt)=>!img?`<div class="ph-missing">Foto real a enviar</div>`:img.startsWith('svg:')?containerSVG(img.slice(4)):`<img src="img/${img}.jpg" alt="${esc(alt)}" loading="lazy">`;
 const svcCard=(k)=>{const s=SVC[k];return `<a class="svc" href="#${k}"><div class="ph">${ph(s.img,s.name)}</div><div class="tx"><span class="tag">${s.tag}</span><h3>${s.name}</h3><ul>${s.bullets.map(b=>`<li>${b}</li>`).join('')}</ul><span class="go">Ver serviço →</span></div></a>`};
 const obraCard=o=>`<figure class="obra" style="margin:0"><img src="img/${o[0]}.jpg" alt="${esc(o[1])}" loading="lazy"><figcaption><span class="t">${o[1]}</span><span class="m">${o[2].toUpperCase()} · LOCAL E CLIENTE A CONFIRMAR</span></figcaption></figure>`;
 const postCard=p=>`<a class="post-card" href="#post"><div class="ph"><img src="img/post-${p[4]}.jpg" alt="" loading="lazy"></div><span class="meta">${CATS[p[2]]} · ${p[5]} min</span><h3>${esc(p[1])}</h3></a>`;
@@ -637,13 +686,13 @@ chips($('#blogChips'),['Todos',...Object.values(CATS)],drawBlog);drawBlog('Todos
 
 function renderSvc(k){
   const s=SVC[k];
-  $('#svcPage').innerHTML=`<div class="phead">${s.img?`<img class="bg" src="img/${s.img}.jpg" alt="">`:''}<div class="wrap">
+  $('#svcPage').innerHTML=`<div class="phead">${s.img&&!s.img.startsWith('svg:')?`<img class="bg" src="img/${s.img}.jpg" alt="">`:''}<div class="wrap">
    <p class="crumbs"><a href="#home">Início</a> / <a href="#servicos">Serviços</a> / ${s.name}</p>
    <h1>${s.h1}</h1><p class="lead">${s.lead}</p>
    <div class="spec"><span>Fábrica em <b>Parnamirim/RN</b></span><span>Atendimento <b>em todo o Brasil</b></span><span>Engenheiro responsável com <b>ART</b></span></div></div></div>
   <div class="band"><div class="wrap svc-detail">
    <div class="prose">${s.body}
-    <div class="gallery">${s.gallery.map(g=>g?`<img src="img/${g}.jpg" alt="${esc(s.name)}" loading="lazy">`:`<div class="ph-missing" style="aspect-ratio:1">Foto real a enviar</div>`).join('')}</div>
+    <div class="gallery">${s.gallery.map(g=>`<div style="aspect-ratio:1;overflow:hidden">${ph(g,s.name)}</div>`).join('')}</div>
     <h2>Perguntas frequentes</h2>
     <div class="faq">${s.faq.map(f=>`<details><summary>${f[0]}</summary><p>${f[1]}</p></details>`).join('')}</div>
    </div>
