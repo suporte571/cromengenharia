@@ -1,0 +1,110 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#000;overflow:hidden}canvas{display:block}</style></head><body>
+<script type="module">
+import * as THREE from './three.module.js';
+import { RoomEnvironment } from './RoomEnvironment.js';
+const V=(location.hash||'#escritorio').slice(1);
+const W=1600,H=1000;
+const r=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});
+r.setSize(W,H);r.setPixelRatio(1);r.shadowMap.enabled=true;r.shadowMap.type=THREE.PCFSoftShadowMap;
+r.toneMapping=THREE.ACESFilmicToneMapping;r.toneMappingExposure=1.0;r.outputColorSpace=THREE.SRGBColorSpace;
+document.body.appendChild(r.domElement);
+const scene=new THREE.Scene();
+// céu
+const sc=document.createElement('canvas');sc.width=4;sc.height=512;const g=sc.getContext('2d');
+const gr=g.createLinearGradient(0,0,0,512);gr.addColorStop(0,'#6f9cc6');gr.addColorStop(.55,'#b9d0e2');gr.addColorStop(1,'#e9ede8');g.fillStyle=gr;g.fillRect(0,0,4,512);
+const sky=new THREE.CanvasTexture(sc);sky.colorSpace=THREE.SRGBColorSpace;scene.background=sky;
+scene.fog=new THREE.Fog(0xd9e1e2,25,110);
+const pm=new THREE.PMREMGenerator(r);scene.environment=pm.fromScene(new RoomEnvironment(),0.04).texture;scene.environmentIntensity=0.35;
+
+// ruído para texturas
+function noiseTex(base,amp,size=512,streak=false){
+  const c=document.createElement('canvas');c.width=c.height=size;const x=c.getContext('2d');x.fillStyle=base;x.fillRect(0,0,size,size);
+  const id=x.getImageData(0,0,size,size),d=id.data;
+  for(let i=0;i<d.length;i+=4){const n=(Math.random()-.5)*amp;d[i]+=n;d[i+1]+=n;d[i+2]+=n}
+  x.putImageData(id,0,0);
+  if(streak){x.globalAlpha=.06;for(let i=0;i<70;i++){x.fillStyle=Math.random()<.5?'#5a4a2a':'#fff';x.fillRect(Math.random()*size,0,1+Math.random()*2,size*(.2+Math.random()*.8))}}
+  const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.colorSpace=THREE.SRGBColorSpace;return t}
+
+const paint=new THREE.MeshStandardMaterial({color:0xffffff,map:noiseTex('#dca52a',6,512,true),roughness:.42,metalness:.35});
+const frameM=new THREE.MeshStandardMaterial({color:0x2c3035,roughness:.55,metalness:.4});
+const whiteM=new THREE.MeshStandardMaterial({color:0xe9ecee,roughness:.4,metalness:.15});
+const aluM=new THREE.MeshStandardMaterial({color:0x8d949b,roughness:.3,metalness:.85});
+const glassM=new THREE.MeshPhysicalMaterial({color:0x1d2a33,roughness:.04,metalness:.2,clearcoat:1,reflectivity:1,envMapIntensity:1.6});
+const concM=new THREE.MeshStandardMaterial({map:noiseTex('#a9a397',26),roughness:.95});
+const groundT=noiseTex('#9a917f',55,1024);groundT.repeat.set(18,18);
+const groundM=new THREE.MeshStandardMaterial({map:groundT,roughness:1});
+
+const L=6.06,Wd=2.44,Hh=2.59,post=.16,rail=.16;
+const box=(w,h,d,m,x,y,z,cast=true)=>{const b=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m);b.position.set(x,y,z);b.castShadow=cast;b.receiveShadow=true;scene.add(b);return b};
+const lift=.22; // altura dos blocos
+// painel corrugado ao longo de X, com altura h, profundidade d
+function corrugated(len,h,depth=.055,pitch=.3){
+  const s=new THREE.Shape();const seg=pitch/4;let x=-len/2;s.moveTo(x,.012);s.lineTo(x,0);
+  while(x<len/2-1e-6){const pts=[[seg,0],[seg,-depth],[seg,-depth],[seg,0]];
+    s.lineTo(Math.min(x+seg*.5,len/2),0);x+=seg*.5;
+    s.lineTo(Math.min(x+seg*.5,len/2),-depth);x+=seg*.5;
+    s.lineTo(Math.min(x+seg*1.5,len/2),-depth);x+=seg*1.5;
+    s.lineTo(Math.min(x+seg*.5,len/2),0);x+=seg*.5;
+    s.lineTo(Math.min(x+seg,len/2),0);x+=seg;}
+  s.lineTo(len/2,.012);s.closePath();
+  const geo=new THREE.ExtrudeGeometry(s,{depth:h,bevelEnabled:false,steps:1});geo.rotateX(-Math.PI/2);geo.computeVertexNormals();
+  // UVs simples
+  return geo}
+const yb=lift+rail, wallH=Hh-2*rail;
+// paredes laterais
+const front=new THREE.Mesh(corrugated(L-2*post,wallH),paint);front.position.set(0,yb,Wd/2-.062);front.castShadow=front.receiveShadow=true;scene.add(front);
+const back=front.clone();back.rotation.y=Math.PI;back.position.z=-Wd/2+.062;scene.add(back);
+const endR=new THREE.Mesh(corrugated(Wd-2*post,wallH),paint);endR.rotation.y=Math.PI/2;endR.position.set(L/2-.062,yb,0);endR.castShadow=endR.receiveShadow=true;scene.add(endR);
+const endL=endR.clone();endL.rotation.y=-Math.PI/2;endL.position.x=-L/2+.062;scene.add(endL);
+// teto
+box(L-.02,.05,Wd-.02,paint,0,lift+Hh-.04,0);
+for(let x=-L/2+.4;x<L/2-.3;x+=.5)box(.08,.025,Wd-.3,paint,x,lift+Hh,0);
+// estrutura
+for(const z of[Wd/2-rail/2,-Wd/2+rail/2]){box(L,rail,rail,frameM,0,lift+rail/2,z);box(L,rail,rail,frameM,0,lift+Hh-rail/2,z)}
+for(const x of[L/2-rail/2,-L/2+rail/2]){box(rail,rail,Wd,frameM,x,lift+rail/2,0);box(rail,rail,Wd,frameM,x,lift+Hh-rail/2,0)}
+for(const x of[L/2-post/2,-L/2+post/2])for(const z of[Wd/2-post/2,-Wd/2+post/2]){box(post,Hh,post,frameM,x,lift+Hh/2,z);
+  box(.18,.12,.18,frameM,x,lift+.06,z);box(.18,.12,.18,frameM,x,lift+Hh-.06,z)}
+// blocos de concreto
+for(const x of[-L/2+.3,0,L/2-.3])for(const z of[Wd/2-.25,-Wd/2+.25])box(.4,lift,.4,concM,x,lift/2,z);
+// chão
+const gnd=new THREE.Mesh(new THREE.PlaneGeometry(200,200),groundM);gnd.rotation.x=-Math.PI/2;gnd.receiveShadow=true;scene.add(gnd);
+// laje de concreto
+box(9,.06,5.2,concM,0,.03,0,false);
+
+const zf=Wd/2+.03;
+function windowAt(x,y,w,h,z=zf,rotY=0){const g=new THREE.Group();
+  const f=.05;const mk=(ww,hh,xx,yy,m=aluM,dd=.05)=>{const b=new THREE.Mesh(new THREE.BoxGeometry(ww,hh,dd),m);b.position.set(xx,yy,0);b.castShadow=true;g.add(b)};
+  mk(w,h,0,0,glassM,.02);mk(w+f*2,f,0,h/2+f/2);mk(w+f*2,f,0,-h/2-f/2);mk(f,h,-w/2-f/2,0);mk(f,h,w/2+f/2,0);mk(f*.6,h,0,0);
+  g.position.set(x,y,z);g.rotation.y=rotY;scene.add(g)}
+function doorAt(x,w,h,z=zf){const g=new THREE.Group();const y0=lift+rail;
+  const p=new THREE.Mesh(new THREE.BoxGeometry(w,h,.04),whiteM);p.position.set(0,h/2,0);p.castShadow=true;g.add(p);
+  for(const[ww,hh,xx,yy]of[[w+.1,.05,0,h+.025],[.05,h,-w/2-.025,h/2],[.05,h,w/2+.025,h/2]]){const b=new THREE.Mesh(new THREE.BoxGeometry(ww,hh,.06),aluM);b.position.set(xx,yy,0);g.add(b)}
+  const hd=new THREE.Mesh(new THREE.BoxGeometry(.14,.03,.05),aluM);hd.position.set(w/2-.12,h*.48,.04);g.add(hd);
+  const vis=new THREE.Mesh(new THREE.BoxGeometry(.3,.4,.02),glassM);vis.position.set(0,h*.72,.022);g.add(vis);
+  g.position.set(x,y0,z);scene.add(g);
+  // degrau
+  box(w+.3,.05,.45,aluM,x,lift-.02,Wd/2+.28);
+  for(const dx of[-w/2-.1,w/2+.1])box(.05,lift,.05,frameM,x+dx,lift/2,Wd/2+.45)}
+function acAt(x,y,z=zf){box(.8,.28,.2,whiteM,x,y,z+.1);box(.7,.02,.01,aluM,x,y-.08,z+.205)}
+
+if(V==='escritorio'){windowAt(-1.85,lift+1.45,1.0,.95);windowAt(-.35,lift+1.45,1.0,.95);acAt(-.35,lift+2.2);doorAt(1.75,.82,2.05)}
+if(V==='almoxarifado'){
+  // portas de carga na extremidade direita
+  const xg=L/2+.01;for(const s of[-1,1]){box(.03,wallH-.02,(Wd-2*post)/2-.01,paint,xg,yb+wallH/2,s*(Wd/4-post/2));
+    for(const dz of[.25,.75])box(.05,wallH-.05,.035,aluM,xg+.03,yb+wallH/2,s*(Wd/2-post)*dz);}
+  box(.02,wallH,.04,frameM,xg+.02,yb+wallH/2,0);
+  doorAt(-1.6,.82,2.05);windowAt(.6,lift+1.75,.6,.4)}
+
+// horizonte: galpões e árvores distantes
+const farM=new THREE.MeshStandardMaterial({color:0xa9b1ad,roughness:1});const treeM=new THREE.MeshStandardMaterial({color:0x5f7a55,roughness:1});
+for(let i=0;i<14;i++){const w=4+Math.random()*9,h=3+Math.random()*5;const b=new THREE.Mesh(new THREE.BoxGeometry(w,h,5),farM);b.position.set(-60+i*9+Math.random()*3,h/2,-45-Math.random()*10);scene.add(b)}
+
+// sol
+const sun=new THREE.DirectionalLight(0xfff0d6,3.6);sun.position.set(11,9,4.5);sun.castShadow=true;
+sun.shadow.mapSize.set(4096,4096);sun.shadow.camera.left=-8;sun.shadow.camera.right=8;sun.shadow.camera.top=8;sun.shadow.camera.bottom=-8;sun.shadow.bias=-.0004;sun.shadow.radius=4;scene.add(sun);
+scene.add(new THREE.HemisphereLight(0xbfd6ea,0x6d6456,.35));
+
+const cam=new THREE.PerspectiveCamera(22,W/H,.1,300);
+if(V==='almoxarifado'){cam.position.set(12.6,1.55,10.2);cam.lookAt(.3,1.3,0)}else{cam.position.set(9.2,1.45,13.2);cam.lookAt(-.1,1.3,0)}
+r.render(scene,cam);document.title='done';
+</script></body></html>
