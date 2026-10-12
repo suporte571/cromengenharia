@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'CROM_VER', '1.0.3' );
+define( 'CROM_VER', '1.0.4' );
 define( 'CROM_WHATS', '5584991519641' );
 define( 'CROM_EMAIL', 'comercial@cromengenharia.com' );
 
@@ -143,3 +143,31 @@ function crom_servico_da_categoria( $post_id = null ) {
 	}
 	return $mapa['estrutura'];
 }
+
+/* ---------- Google Analytics 4 e medição de contatos ---------- */
+
+/* ID do GA4 (G-XXXXXXX), editável pela API REST em /wp/v2/settings. */
+add_action( 'init', function () {
+	register_setting( 'general', 'crom_ga4_id', array(
+		'type'              => 'string',
+		'default'           => '',
+		'show_in_rest'      => true,
+		'sanitize_callback' => function ( $v ) {
+			$v = strtoupper( trim( (string) $v ) );
+			return preg_match( '/^G-[A-Z0-9]{4,20}$/', $v ) ? $v : '';
+		},
+		'description'       => 'ID de medição do Google Analytics 4.',
+	) );
+} );
+
+/* Código do GA4. Não mede quem está logado editando o site. */
+add_action( 'wp_head', function () {
+	$id = get_option( 'crom_ga4_id' );
+	if ( ! $id || ( is_user_logged_in() && current_user_can( 'edit_posts' ) ) ) {
+		return;
+	}
+	?>
+<script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo esc_attr( $id ); ?>"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','<?php echo esc_js( $id ); ?>');</script>
+	<?php
+}, 1 );

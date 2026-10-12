@@ -37,7 +37,7 @@ function crom_header() {
 <a class="skip" href="#conteudo">Ir para o conteúdo</a>
 <div class="topbar"><div class="wrap">
 	<span>Fábrica: <b>BR-304, Km 507 · Parnamirim/RN</b></span>
-	<span>WhatsApp <b>(84) 99151-9641</b><span class="mail"> · <b><?php echo esc_html( CROM_EMAIL ); ?></b></span></span>
+	<span>WhatsApp <a href="https://wa.me/<?php echo CROM_WHATS; ?>" target="_blank" rel="noopener"><b>(84) 99151-9641</b></a><span class="mail"> · <b><?php echo esc_html( CROM_EMAIL ); ?></b></span></span>
 </div></div>
 <header class="site"><div class="wrap">
 	<a class="logo" href="<?php echo crom_url( '/' ); ?>" aria-label="CROM Engenharia, início"><img src="<?php echo esc_url( $logo ); ?>" alt="CROM Engenharia" width="165" height="44"></a>
@@ -86,7 +86,7 @@ function crom_footer() {
 		</ul></div>
 		<div><h2 class="fh">Contato</h2><ul>
 			<li><a href="https://wa.me/<?php echo CROM_WHATS; ?>" target="_blank" rel="noopener">WhatsApp (84) 99151-9641</a></li>
-			<li>(84) 99650-7337 · (84) 99106-0289</li>
+			<li><a href="tel:+5584996507337">(84) 99650-7337</a> · <a href="tel:+5584991060289">(84) 99106-0289</a></li>
 			<li><a href="mailto:<?php echo esc_attr( CROM_EMAIL ); ?>"><?php echo esc_html( CROM_EMAIL ); ?></a></li>
 			<li>BR-304, Km 507, s/n · Encanto Verde<br>Parnamirim/RN · 59146-750</li>
 		</ul></div>

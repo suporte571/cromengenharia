@@ -35,7 +35,7 @@ add_action( 'init', function () {
 } );
 
 add_filter( 'manage_crom_pedido_posts_columns', function ( $cols ) {
-	return array( 'cb' => $cols['cb'], 'title' => 'Cliente', 'crom_tel' => 'WhatsApp', 'crom_serv' => 'Serviço', 'crom_mail' => 'E-mail enviado', 'date' => 'Data' );
+	return array( 'cb' => $cols['cb'], 'title' => 'Cliente', 'crom_tel' => 'WhatsApp', 'crom_serv' => 'Serviço', 'crom_origem' => 'Origem', 'crom_mail' => 'E-mail enviado', 'date' => 'Data' );
 } );
 add_action( 'manage_crom_pedido_posts_custom_column', function ( $col, $id ) {
 	if ( 'crom_tel' === $col ) {
@@ -47,6 +47,8 @@ add_action( 'manage_crom_pedido_posts_custom_column', function ( $col, $id ) {
 		echo $n ? '<a href="https://wa.me/' . esc_attr( $n ) . '" target="_blank" rel="noopener">' . esc_html( $t ) . '</a>' : '';
 	} elseif ( 'crom_serv' === $col ) {
 		echo esc_html( get_post_meta( $id, '_crom_servico', true ) );
+	} elseif ( 'crom_origem' === $col ) {
+		echo esc_html( get_post_meta( $id, '_crom_origem', true ) );
 	} elseif ( 'crom_mail' === $col ) {
 		echo get_post_meta( $id, '_crom_mail_ok', true ) ? 'Sim' : '<strong style="color:#b32d2e">Não</strong>';
 	}
@@ -64,6 +66,7 @@ add_shortcode( 'crom_orcamento', function () {
 			<div class="full err" role="alert">Não foi possível enviar. Confira nome e WhatsApp, ou fale direto pelo WhatsApp (84) 99151-9641.</div>
 		<?php endif; ?>
 		<input type="hidden" name="action" value="crom_orcamento">
+		<input type="hidden" name="origem" id="f-origem" value="">
 		<?php wp_nonce_field( 'crom_orcamento', 'crom_nonce' ); ?>
 		<label class="hp" aria-hidden="true">Não preencha<input name="site_url" tabindex="-1" autocomplete="off"></label>
 		<label>Nome<input id="f-nome" name="nome" autocomplete="name" required></label>
@@ -96,6 +99,7 @@ function crom_orcamento_enviar() {
 	foreach ( array( 'nome', 'empresa', 'tel', 'email', 'servico', 'cidade' ) as $k ) {
 		$c[ $k ] = isset( $_POST[ $k ] ) ? sanitize_text_field( wp_unslash( $_POST[ $k ] ) ) : '';
 	}
+	$origem = isset( $_POST['origem'] ) ? substr( sanitize_text_field( wp_unslash( $_POST['origem'] ) ), 0, 300 ) : '';
 	$msg = isset( $_POST['msg'] ) ? sanitize_textarea_field( wp_unslash( $_POST['msg'] ) ) : '';
 	if ( '' === $c['nome'] || '' === $c['tel'] ) {
 		wp_safe_redirect( $falha );
@@ -103,7 +107,8 @@ function crom_orcamento_enviar() {
 	}
 	$corpo = "Novo pedido de orçamento pelo site\n\n"
 		. "Nome: {$c['nome']}\nEmpresa: {$c['empresa']}\nWhatsApp: {$c['tel']}\nE-mail: {$c['email']}\n"
-		. "Serviço: {$c['servico']}\nCidade/UF: {$c['cidade']}\n\nMensagem:\n{$msg}\n";
+		. "Serviço: {$c['servico']}\nCidade/UF: {$c['cidade']}\n\nMensagem:\n{$msg}\n\n"
+		. 'Origem do visitante: ' . ( $origem ? $origem : 'não identificada' ) . "\n";
 	$pid = wp_insert_post( array(
 		'post_type'    => 'crom_pedido',
 		'post_status'  => 'private',
@@ -113,6 +118,7 @@ function crom_orcamento_enviar() {
 	if ( $pid && ! is_wp_error( $pid ) ) {
 		update_post_meta( $pid, '_crom_tel', $c['tel'] );
 		update_post_meta( $pid, '_crom_servico', $c['servico'] );
+		update_post_meta( $pid, '_crom_origem', $origem );
 	}
 	$headers = array();
 	if ( is_email( $c['email'] ) ) {

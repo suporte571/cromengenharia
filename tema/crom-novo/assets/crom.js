@@ -1,4 +1,60 @@
 (function () {
+  // ---------- Medição de contatos (GA4) e origem do visitante ----------
+  function ev(nome, params) {
+    if (typeof window.gtag === 'function') window.gtag('event', nome, params || {});
+  }
+  function ler(k) { try { return JSON.parse(localStorage.getItem(k) || 'null'); } catch (e) { return null; } }
+  function gravar(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+
+  // Origem: guardada na primeira visita (vale 30 dias) e enviada junto com o pedido de orçamento.
+  (function () {
+    var o = ler('crom_origem');
+    if (o && Date.now() - o.t < 30 * 864e5) return;
+    var q = new URLSearchParams(location.search), ref = document.referrer, fonte;
+    var host = '';
+    try { host = ref ? new URL(ref).hostname.replace(/^www\./, '') : ''; } catch (e) {}
+    if (host === location.hostname.replace(/^www\./, '')) return;
+    if (q.get('gclid')) fonte = 'Google Ads';
+    else if (q.get('utm_source')) fonte = [q.get('utm_source'), q.get('utm_medium'), q.get('utm_campaign')].filter(Boolean).join(' / ');
+    else if (!host) fonte = 'Direto (digitou o endereço ou link salvo)';
+    else if (/google\./.test(host)) fonte = 'Google (busca)';
+    else if (/bing\.|yahoo\.|duckduckgo/.test(host)) fonte = 'Outros buscadores (' + host + ')';
+    else if (/instagram/.test(host)) fonte = 'Instagram';
+    else if (/facebook|fb\./.test(host)) fonte = 'Facebook';
+    else if (/linkedin|lnkd/.test(host)) fonte = 'LinkedIn';
+    else if (/whatsapp|wa\.me/.test(host)) fonte = 'WhatsApp';
+    else fonte = 'Site ' + host;
+    gravar('crom_origem', { t: Date.now(), fonte: fonte, entrada: location.pathname });
+  })();
+  function origemTexto() {
+    var o = ler('crom_origem');
+    return o ? o.fonte + ' · entrou por ' + o.entrada : 'não identificada';
+  }
+
+  var fo = document.getElementById('f-origem');
+  if (fo) fo.value = origemTexto();
+
+  // Cliques em WhatsApp, telefone e e-mail contam como contato gerado.
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a) return;
+    var h = a.getAttribute('href') || '', m = null;
+    if (/^https?:\/\/(api\.)?(wa\.me|whatsapp\.com)/.test(h)) m = 'whatsapp';
+    else if (/^tel:/.test(h)) m = 'telefone';
+    else if (/^mailto:/.test(h)) m = 'email';
+    if (!m) return;
+    var area = a.closest('header,footer,.box,.hero,.wa,form') ;
+    ev('generate_lead', { contact_method: m, link_location: area ? (area.className || area.tagName).toString().split(' ')[0].toLowerCase() : 'conteudo' });
+  }, true);
+
+  // Pedido de orçamento enviado com sucesso (conta uma vez por envio).
+  if (/[?&]enviado=1/.test(location.search) && document.querySelector('form.quote .ok')) {
+    var marca = 'crom_lead_' + location.search;
+    var ja = false;
+    try { ja = sessionStorage.getItem(marca); sessionStorage.setItem(marca, '1'); } catch (e) {}
+    if (!ja) ev('generate_lead', { contact_method: 'formulario', link_location: 'contato' });
+  }
+
   var t = document.getElementById('menuToggle'), n = document.getElementById('mainNav');
   if (t && n) {
     t.addEventListener('click', function () {
@@ -34,6 +90,7 @@
       var btn = form.querySelector('button[type=submit]');
       if (btn) { btn.disabled = true; btn.textContent = 'Enviando…'; }
       var dados = new FormData(form);
+      dados.set('origem', origemTexto());
       var enviar = function (tentativa) {
         return fetch(form.action, { method: 'POST', body: dados, credentials: 'same-origin', redirect: 'follow' })
           .then(function (r) {
