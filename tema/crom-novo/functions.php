@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'CROM_VER', '1.0.2' );
+define( 'CROM_VER', '1.0.3' );
 define( 'CROM_WHATS', '5584991519641' );
 define( 'CROM_EMAIL', 'comercial@cromengenharia.com' );
 
